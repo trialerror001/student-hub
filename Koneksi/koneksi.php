@@ -4,10 +4,10 @@
 	$myPass = "ferbynia";
 	$myDbs = "u284822025_st";*/
         
-        $myHost = "localhost";
+    $myHost = "localhost";
 	$myUser = "root";
 	$myPass = "";
-	$myDbs = "surat_tugas";
+	$myDbs = "sistem_ruangan";
 	
 	
 	$koneksidb = @mysql_connect($myHost, $myUser, $myPass) ;

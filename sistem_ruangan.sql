@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.3
+-- version 4.7.9
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Dec 20, 2018 at 08:40 PM
--- Server version: 5.7.23
--- PHP Version: 7.2.10
+-- Generation Time: Dec 27, 2018 at 03:32 AM
+-- Server version: 5.7.21
+-- PHP Version: 5.6.35
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -38,6 +38,20 @@ CREATE TABLE IF NOT EXISTS `tb_barang` (
   PRIMARY KEY (`kd_barang`),
   KEY `kd_peminjaman` (`kd_peminjaman`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf32;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tb_login`
+--
+
+DROP TABLE IF EXISTS `tb_login`;
+CREATE TABLE IF NOT EXISTS `tb_login` (
+  `username` varchar(30) NOT NULL,
+  `password` varchar(50) NOT NULL,
+  `level` varchar(20) NOT NULL,
+  PRIMARY KEY (`username`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 

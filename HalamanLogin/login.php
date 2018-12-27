@@ -7,21 +7,22 @@
 
 	<?php require "partials/loader.php"; ?>
 	<div class="peers ai-s fxw-nw h-100vh">
-		<div class="d-n@sm- peer peer-greed h-100 pos-r bgr-n bgpX-c bgpY-c bgsz-cv" style="background-image:url(assets/static/images/bg.jpg)">
+		<div class="d-n@sm- peer peer-greed h-100 pos-r bgr-n bgpX-c bgpY-c bgsz-cv" style="background-image:url(HalamanLogin/assets/static/images/bg.jpg)">
 			<div class="pos-a centerXY">
 				
 			</div>
 		</div>
 		<div class="col-12 col-md-4 peer pX-40 pY-80 h-100 bgc-white scrollable pos-r" style="min-width:320px">
-			<h4 class="fw-300 c-grey-900 mB-40"><center><img src="assets/static/images/logo.png" height="130.px" width="330.px"></center></h4>
-			<form action="controller/mylogin.php" method="POST">
+			<h4 class="fw-300 c-grey-900 mB-40"><center><img src="HalamanLogin/assets/static/images/logo.png" height="130.px" width="330.px"></center></h4>
+
+			<form action="?page=Validasi" method="POST">
 				<div class="form-group">
 					<label class="text-normal text-dark">Username</label> 
-					<input type="email" class="form-control" name="email" placeholder="Username">
+					<input type="email" class="form-control" name="email" placeholder="Username" required>
 				</div>
 				<div class="form-group">
 					<label class="text-normal text-dark">Password</label> 
-					<input type="password" class="form-control" name="password" placeholder="Password">
+					<input type="password" class="form-control" name="password" placeholder="Password" required>
 				</div>
 				<div class="form-group">
 					<div class="peers ai-c jc-sb fxw-nw">
@@ -33,7 +34,7 @@
 								</label>
 							</div>
 						</div>
-						<div class="peer"><button class="btn btn-primary">Login</button>
+						<div class="peer"><button class="btn btn-primary" name="btnLogin">Login</button>
 						</div>
 					</div>
 				</div>
