@@ -1,6 +1,6 @@
 <html>
 <head>
-	<title>Sign In</title>
+	<title>Atma Student Hub</title>
 	<?php require "partials/header.php"; ?>
 </head>
 <body class="app">
