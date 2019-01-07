@@ -1,3 +1,0 @@
-Ini ada contoh dari halaman awal sebuah website admin.
-
-Kita akan pakai format penulisan coding seperti ini ya. Biar gampang di kedepannya.
