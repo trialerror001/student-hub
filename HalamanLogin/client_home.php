@@ -2,7 +2,7 @@
 <html>
 <head>
 	<title></title>
-	<?php 
+	<?php
 	require "./partials/header.php";
 	?>
 </head>
