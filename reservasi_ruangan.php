@@ -2,13 +2,15 @@
 <html>
 <head>
 	<title></title>
-	<?php 
-	require "./partials/header.php";
+	<?php
+	require "./HalamanLogin/partials/header.php";
 	?>
 </head>
 <body class="app">
-	<div class="page-container"> 
-		<?php require './partials/admin_navbar.php'; ?>
+	<div class="page-container">
+		<?php
+		require './HalamanLogin/partials/admin_navbar.php'; 
+		?>
 
 		<main class="main-content bgc-grey-100">
 			<div id="mainContent">
@@ -17,7 +19,7 @@
 					<div class="col-md-12 calendar-size">
 						<div id="full-calendar" class="fc fc-unthemed fc-ltr" >
 						</div>
-					</div> 	
+					</div>
 				</div>
 				<br>
 				<center>
@@ -30,7 +32,7 @@
 						<div class="row row-content border-content"><div><input type="checkbox" onChange="addToSelected(1)"></div><div>satu</div></div>
 						<div class="row row-content border-content"><div><input type="checkbox" onChange="addToSelected(1)"></div><div>satu</div></div>
 						<div class="row row-content border-content"><div><input type="checkbox" onChange="addToSelected(1)"></div><div>satu</div></div>
-						
+
 					</div>
 					</div>
 					<div class="col-md-2" style="display: flex; flex-direction: column; align-items:center; justify-content: center;">
@@ -44,20 +46,20 @@
 					</div>
 					<div class="col-md-5 table-content">
 						<table class="table" id="right">
-							
+
 						<div class="row row-content border-content" id="table-header"><div><b>Used Room</b></div></div>
 							<div class="row row-content border-content"><div><input type="checkbox" onChange="addToSelected(1)"></div><div>satu</div></div>
 							<div class="row row-content border-content"><div><input type="checkbox" onChange="addToSelected(1)"></div><div>satu</div></div>
 							<div class="row row-content border-content"><div><input type="checkbox" onChange="addToSelected(1)"></div><div>satu</div></div>
 							<div class="row row-content border-content"><div><input type="checkbox" onChange="addToSelected(1)"></div><div>satu</div></div>
 						</table>
-					</div> 	
+					</div>
 				</div>
 			</center>
 			<!-- END CODE -->
 			</div>
 		</main>
-		
+
 	</div>
 <?php
 require "./partials/footer.php";
@@ -135,7 +137,7 @@ padding-right: 10em;
 }
 
 #table-container {
-	padding: 
+	padding:
 	border: 0.1px solid #2c3e50;
 	padding: 1em;
 	max-width: 70%;

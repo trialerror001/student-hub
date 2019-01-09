@@ -15,8 +15,8 @@
 					<li role="separator" class="divider"></li>
 					<li>
 						<a href="" class="d-b td-n pY-5 bgcH-grey-100 c-grey-700">
-							<i class="ti-power-off mR-10"></i> 
-							<span>Logout</span>
+							<i class="ti-power-off mR-10"></i>
+							<form action="library/logout.inc.php" method="POST"><button type="submit" name="logout">Logout</button></form>
 						</a>
 					</li>
 				</ul>
