@@ -3,12 +3,12 @@
 <head>
 	<title></title>
 	<?php 
-	require "./partials/header.php";
+	require "./HalamanLogin/partials/header.php";
 	?>
 </head>
 <body class="app">
 	<div class="page-container">
-		<?php require './partials/client_navbar.php'; ?>
+		<?php require './HalamanLogin/partials/client_navbar.php'; ?>
 		<main class="main-content bgc-grey-100">
 			<div id="mainContent">
 				<div class="row">
@@ -59,7 +59,7 @@
 		</main>
 	</div>
 <?php
-require "./partials/footer.php";
+require "./HalamanLogin/partials/footer.php";
 ?>
 <script>
 	$('#full-calendar').fullCalendar('option', 'height', 300);
