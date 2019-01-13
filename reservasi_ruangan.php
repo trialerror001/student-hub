@@ -62,7 +62,7 @@
 
 	</div>
 <?php
-require "./partials/footer.php";
+require "./HalamanLogin/partials/footer.php";
 ?>
 <script>
 	var right = [6,7,8];
