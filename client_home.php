@@ -49,7 +49,7 @@
 						</div>
 					</div>
 				<div class="row col-md-12" style="padding:0.5em; display: flex; align-items:center; justify-content: center;">
-					<button class="btn btn-primary" style="color: #fff">book now</button>
+					<button class="btn btn-primary" style="color: #fff"><a href="form_regis.php">book now</button>
 				</div>
 					</div>
 					</div>
