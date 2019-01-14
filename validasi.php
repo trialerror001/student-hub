@@ -5,7 +5,7 @@ session_start();
 if (isset($_POST['btnLogin'])) {
 
     include 'library/database.inc.php';
-
+    
     $user = mysqli_real_escape_string($conn, $_POST['email']);
     $pass = mysqli_real_escape_string($conn, $_POST['pwd']);
 
