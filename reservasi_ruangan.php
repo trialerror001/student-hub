@@ -9,7 +9,7 @@
 <body class="app">
 	<div class="page-container">
 		<?php
-		require './HalamanLogin/partials/admin_navbar.php'; 
+		require './HalamanLogin/partials/client_navbar.php'; 
 		?>
 
 		<main class="main-content bgc-grey-100">
