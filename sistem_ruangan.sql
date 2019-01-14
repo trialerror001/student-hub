@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Dec 27, 2018 at 03:32 AM
+-- Generation Time: Jan 14, 2019 at 07:38 AM
 -- Server version: 5.7.21
 -- PHP Version: 5.6.35
 
@@ -52,6 +52,13 @@ CREATE TABLE IF NOT EXISTS `tb_login` (
   `level` varchar(20) NOT NULL,
   PRIMARY KEY (`username`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tb_login`
+--
+
+INSERT INTO `tb_login` (`username`, `password`, `level`) VALUES
+('admin', '21232f297a57a5a743894a0e4a801fc3', 'admin');
 
 -- --------------------------------------------------------
 
