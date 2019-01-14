@@ -4,6 +4,6 @@
 	<?php session_start(); ?>
 </head>
 <body>
-	<?php include 'Page/page.php' ?>
+	<?php include './Page/page.php' ?>
 </body>
 </html>
