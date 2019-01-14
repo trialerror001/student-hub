@@ -3,12 +3,12 @@
 <head>
 	<title></title>
 	<?php 
-	require "./partials/header.php";
+	require "./HalamanLogin/partials/header.php";
 	?>
 </head>
 <body class="app">
 	<div class="page-container">
-		<?php require './partials/client_navbar.php'; ?>
+		<?php require './HalamanLogin/partials/client_navbar.php'; ?>
 		<main class="main-content bgc-grey-100">
 			<div id="mainContent">
 				<div class="row">
@@ -49,7 +49,7 @@
 						</div>
 					</div>
 				<div class="row col-md-12" style="padding:0.5em; display: flex; align-items:center; justify-content: center;">
-					<button class="btn btn-primary" style="color: #fff">book now</button>
+					<button class="btn btn-primary" style="color: #fff"><a href="form_regis.php">book now</button>
 				</div>
 					</div>
 					</div>
@@ -59,7 +59,7 @@
 		</main>
 	</div>
 <?php
-require "./partials/footer.php";
+require "./HalamanLogin/partials/footer.php";
 ?>
 <script>
 	$('#full-calendar').fullCalendar('option', 'height', 300);
