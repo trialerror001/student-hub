@@ -10,12 +10,7 @@
 						<img class="w-2r bdrs-50p" src="" alt="">
 					</div>
 					<div class="peer">
-						<span class="fsz-sm c-white">
-							<?php
-								session_start();
-								echo $_SESSION['email'];
-							?>
-						</span>
+						<span class="fsz-sm c-white">Place Holder</span>
 					</div>
 				</a>
 				<ul class="dropdown-menu fsz-sm">
