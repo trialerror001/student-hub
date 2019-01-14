@@ -3,13 +3,8 @@
 if (isset($_POST['btnLogin'])) {
 
     include 'library/database.inc.php';
-<<<<<<< HEAD
 
     $user = mysqli_real_escape_string($conn, $_POST['user']);
-=======
-    
-    $user = mysqli_real_escape_string($conn, $_POST['email']);
->>>>>>> 152d2284c1b6cd5fa631651c6b19db474d3742b3
     $pass = mysqli_real_escape_string($conn, $_POST['pwd']);
 
     //cek user
