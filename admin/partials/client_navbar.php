@@ -19,10 +19,16 @@
 					<li>
 						<a href="" class="d-b td-n pY-5 bgcH-grey-100 c-grey-700">
 							<i class="ti-power-off mR-10"></i> 
+							<span>Room Booking</span>
+						</a>
+					</li>
+				<li role="separator" class="divider"></li>
+					<li>
+						<a href="" class="d-b td-n pY-5 bgcH-grey-100 c-grey-700">
+							<i class="ti-power-off mR-10"></i> 
 							<span>Logout</span>
 						</a>
 					</li>
-				</ul>
 			</li>
 		</ul>
 	</div>
