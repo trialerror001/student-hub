@@ -16,13 +16,13 @@
 			<div id="mainContent">
 			<!-- CODE HERE -->
 				<div class="row">
-					<div class="col-md-12 calendar-size">
-						<div id="full-calendar" class="fc fc-unthemed fc-ltr" >
+					<div class="col-md-12 calendar-size" style="min-height: 20%!important; max-height: 50%!important">
+						<div id="full-calendar" class="fc fc-unthemed fc-ltr" style="min-height: 20%!important; max-height: 50%!important" >
 						</div>
 					</div>
 				</div>
 				<br>
-				<center>
+				<!--<center>
 				<div class="row" id="table-container">
 					<div class="col-md-5 table-content">
 					<div id="left">
@@ -55,7 +55,7 @@
 						</table>
 					</div>
 				</div>
-			</center>
+			</center> -->
 			<!-- END CODE -->
 			</div>
 		</main>
@@ -64,7 +64,7 @@
 <?php
 require "./admin/partials/footer.php";
 ?>
-<script>
+<!--<script>
 	var right = [6,7,8];
 	var left = [1,2,3,4,5];
 
@@ -115,7 +115,7 @@ require "./admin/partials/footer.php";
 
 
 
-</script>
+</script>-->
 
 <style>
 #table-header {

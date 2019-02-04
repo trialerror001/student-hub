@@ -7,10 +7,12 @@
 						<img class="w-2r bdrs-50p" src="" alt="">
 					</div>
 					<div class="peer">
-						<span class="fsz-sm c-white"><img src="./assets/assets/static/images/banner.png" height="60.em" width="150.em"></span>
+						<span class="fsz-sm c-white"><img src="./assets/assets/static/images/header.png" height="60.em" width="150.em"></span>
 					</div>
 				</a>
-				
+				</li>
+			</ul>
+		
 		<ul class="nav-right">
 			<li class="dropdown">
 				<a href="" class="dropdown-toggle no-after peers fxw-nw ai-c lh-1" data-toggle="dropdown">
