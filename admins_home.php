@@ -3,7 +3,9 @@
 <head>
 	<title></title>
 	<?php 
+	//session_start();
 	require "./admin/partials/header.php";
+	require "./library/inc.seslogin.php";
 	?>
 </head>
 <body class="app">

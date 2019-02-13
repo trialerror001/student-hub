@@ -1,0 +1,37 @@
+tb_organisasi
+------------
+nama_organisasi(pk)
+email_organisasi
+
+tb_registrasi
+--------------
+username(pk)
+password
+nama_organisasi(fk)
+email_organisasi
+
+tb_request
+------------
+id_request(pk)(varchar 10)
+nama_organisasi
+kd_ruangan
+keperluan
+tanggal_permohonan 
+tanggal_pinjam
+tanggal_selesai
+waktu_mulai
+waktu_selesai
+
+tb_observasi
+---------------
+kode_peminjaman(pk)(varchar 10)
+id_request(fk)
+status_peminjaman
+
+tb_ruangan
+------------
+kd_ruangan(pk)
+nama_ruangan
+keterangan
+
+

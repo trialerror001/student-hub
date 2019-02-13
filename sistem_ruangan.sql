@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.3
+-- version 4.7.9
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jan 18, 2019 at 07:20 PM
--- Server version: 5.7.23
--- PHP Version: 7.2.10
+-- Generation Time: Feb 13, 2019 at 02:18 AM
+-- Server version: 5.7.21
+-- PHP Version: 5.6.35
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -71,10 +71,24 @@ DROP TABLE IF EXISTS `tb_observasi`;
 CREATE TABLE IF NOT EXISTS `tb_observasi` (
   `kd_peminjaman` varchar(12) NOT NULL,
   `id_request` varchar(10) CHARACTER SET utf8 NOT NULL,
+  `kd_ruangan` varchar(15) NOT NULL,
+  `tanggal_pinjam` date NOT NULL,
+  `tanggal_selesai` date NOT NULL,
+  `waktu_pinjam` time NOT NULL,
+  `waktu_selesai` time NOT NULL,
   `status_peminjaman` text NOT NULL,
   PRIMARY KEY (`kd_peminjaman`),
   KEY `id_request` (`id_request`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf32;
+
+--
+-- Dumping data for table `tb_observasi`
+--
+
+INSERT INTO `tb_observasi` (`kd_peminjaman`, `id_request`, `kd_ruangan`, `tanggal_pinjam`, `tanggal_selesai`, `waktu_pinjam`, `waktu_selesai`, `status_peminjaman`) VALUES
+('OBS0001', 'REQ0001', 'A1_201', '2019-02-15', '2019-02-17', '09:00:00', '15:00:00', 'Available'),
+('OBS0003', 'REQ0004', 'A1_201', '2019-02-15', '2019-02-16', '08:00:00', '08:30:00', 'Available'),
+('OBS0002', 'REQ0003', 'A1_202', '2019-02-15', '2019-02-16', '11:00:00', '14:00:00', 'Available');
 
 -- --------------------------------------------------------
 
@@ -88,6 +102,14 @@ CREATE TABLE IF NOT EXISTS `tb_organisasi` (
   `email_organisasi` varchar(50) NOT NULL,
   PRIMARY KEY (`nama_organisasi`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `tb_organisasi`
+--
+
+INSERT INTO `tb_organisasi` (`nama_organisasi`, `email_organisasi`) VALUES
+('Himpunan Mahasiswa Elektro', 'hme.ft@atmajaya.ac.id'),
+('Himpunan Mahasiswa Teknik Industri', 'hmti.ft@atmajaya.ac.id');
 
 -- --------------------------------------------------------
 
@@ -127,6 +149,17 @@ CREATE TABLE IF NOT EXISTS `tb_request` (
   KEY `nama_organisasi` (`nama_organisasi`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `tb_request`
+--
+
+INSERT INTO `tb_request` (`id_request`, `nama_organisasi`, `kd_ruangan`, `keperluan`, `tanggal_permohonan`, `tanggal_pinjam`, `tanggal_selesai`, `waktu_mulai`, `waktu_selesai`) VALUES
+('REQ0002', 'Himpunan Mahasiswa Teknik Industri', 'A1_201', 'Orientasi Mahasiswa Baru', '2019-02-11', '2019-02-16', '2019-02-17', '08:00:00', '14:30:00'),
+('REQ0001', 'Himpunan Mahasiswa Elektro', 'A1_201', 'Orientasi Mahasiswa Baru', '2019-02-09', '2019-02-15', '2019-02-17', '09:00:00', '15:00:00'),
+('REQ0003', 'Himpunan Mahasiswa Elektro', 'A1_202', 'Orientasi Mahasiswa Baru', '2019-02-12', '2019-02-15', '2019-02-16', '11:00:00', '14:00:00'),
+('REQ0004', 'Himpunan Mahasiswa Elektro', 'A1_201', 'Orientasi Mahasiswa Baru', '2019-02-12', '2019-02-15', '2019-02-16', '08:00:00', '08:30:00'),
+('REQ0005', 'Himpunan Mahasiswa Elektro', 'A1_201', 'Orientasi Mahasiswa Baru', '2019-02-12', '2019-02-15', '2019-02-15', '08:00:00', '09:00:00');
+
 -- --------------------------------------------------------
 
 --
@@ -140,6 +173,14 @@ CREATE TABLE IF NOT EXISTS `tb_ruangan` (
   `keterangan` text NOT NULL,
   PRIMARY KEY (`kd_ruangan`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf32;
+
+--
+-- Dumping data for table `tb_ruangan`
+--
+
+INSERT INTO `tb_ruangan` (`kd_ruangan`, `nama_ruangan`, `keterangan`) VALUES
+('A1_201', 'Ruang Kelas A1_201', ''),
+('A1_202', 'Ruang Kelas A2_202', '');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

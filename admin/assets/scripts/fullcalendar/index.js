@@ -10,7 +10,7 @@ export default (function () {
 
   const events = [{
     title  : 'All Day Event',
-    start  : new Date(y, m, 1),
+    start  : new Date(y, m, 2),
     desc   : 'Meetings',
     bullet : 'success',
   }, {

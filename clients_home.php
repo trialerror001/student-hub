@@ -138,7 +138,7 @@ padding-right: 10em;
 
 #table-container {
 	padding:
-	border: 0.1px solid #2c3e50;
+	border:0.1px solid #2c3e50;
 	padding: 1em;
 	max-width: 70%;
 	min-width: 70%;

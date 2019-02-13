@@ -2,7 +2,9 @@
 <html>
 <head>
 	<title>Atma Student Hub</title>
-	<?php require "partials/header.php"; ?>
+	<?php 
+	session_start();
+	require "partials/header.php"; ?>
 </head>
 <body class="app">
 
