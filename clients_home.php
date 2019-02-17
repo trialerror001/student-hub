@@ -5,6 +5,7 @@
 	<?php
 	require "./admin/partials/header.php";
 	?>
+	<link href="calendar.css" type="text/css" rel="stylesheet" />
 </head>
 <body class="app">
 	<div class="page-container">
@@ -16,13 +17,19 @@
 			<div id="mainContent">
 			<!-- CODE HERE -->
 				<div class="row">
-					<div class="col-md-12 calendar-size" style="min-height: 20%!important; max-height: 50%!important">
-						<div id="full-calendar" class="fc fc-unthemed fc-ltr" style="min-height: 20%!important; max-height: 50%!important" >
+					<div class="col-md-12 " style="min-height: 20%!important; max-height: 50%!important">
+						<?php
+								include 'calendar.php';
+ 
+								$calendar = new Calendar();
+ 
+								echo $calendar->show();
+						?>
 						</div>
 					</div>
 				</div>
 				<br>
-				<!--<center>
+		<!--<center>
 				<div class="row" id="table-container">
 					<div class="col-md-5 table-content">
 					<div id="left">

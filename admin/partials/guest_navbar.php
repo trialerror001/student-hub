@@ -1,4 +1,4 @@
-<div class="header navbar" style="background-color:#FF6918; width:100%;">
+<div class="header navbar" style="background-color:#FF6918!important; width:100%!important;">
 	<div class="header-container"> 
 		<ul class="nav-left">
 			<li class="dropdown">

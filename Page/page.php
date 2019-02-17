@@ -1,5 +1,5 @@
 <?php
-if ($_GET) {
+if (isset($_GET['page'])) {
     // Jika mendapatkan variabel URL ?page
     switch ($_GET['page']) {
 

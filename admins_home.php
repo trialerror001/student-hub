@@ -7,6 +7,7 @@
 	require "./admin/partials/header.php";
 	require "./library/inc.seslogin.php";
 	?>
+<link href="calendar.css" type="text/css" rel="stylesheet" />
 </head>
 <body class="app">
 	<div class="page-container">
@@ -15,9 +16,13 @@
 			<div id="mainContent">
 				<div class="row">
 					<div class="col-md-8">
-						<div id="full-calendar" class="fc fc-unthemed fc-ltr" style="max-width:
-						 ">
-						</div>
+						<?php
+								include 'calendar.php';
+ 
+								$calendar = new Calendar();
+ 
+								echo $calendar->show();
+						?>
 					</div> 	
 					<div class="col-md-2">
 						<div style="background-color:#5f5f5f; height:12em; width:12em;">
@@ -31,9 +36,7 @@
 						<div style="background-color:#5f361f; height:12em; width:12em;">
 						</div>
 					<br>				
-						<div style="background-color:#ff3f12; height:12em; width:12em;">
-						</div>
-					<br>
+						
 				</div>
 				<div class="col-md-2">
 						<div style="background-color:#5f5f5f; height:12em; width:12em;">
@@ -47,8 +50,7 @@
 						<div style="background-color:#5f361f; height:12em; width:12em;">
 						</div>
 					<br>				
-						<div style="background-color:#ff3f12; height:12em; width:12em;">
-						</div>
+						
 					</div>
 				<div class="row col-md-12" style="padding:0.5em; display: flex; align-items:center; justify-content: center;">
 					<button class="btn btn-warning" style="color: #fff"><a href="?page=FormRegistrasi">book now</button>
@@ -64,7 +66,7 @@
 require "./admin/partials/footer.php";
 ?>
 <script>
-	$('#full-calendar').fullCalendar('option', 'height', 300);
+	
 </script>
 
 </body>
