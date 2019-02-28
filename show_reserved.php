@@ -5,6 +5,7 @@
 	<?php 
 	require "./admin/partials/header.php";
 	include "./library/inc.library.php";
+        include "./library/inc.seslogin.php";
 	include "./fungsi/fungsi.php";
         $fungsi = new DB_Functions();
 	?>
@@ -15,12 +16,11 @@
         $(document).ready(function () {
             $('#datatable').DataTable();
         });
-        </script>
+    </script>
+    <?php
+    $fungsi->updateDoneStatus(date("Y/m/d"));
+    ?>
 </head>
-<body class="app">
-	<div class="page-container"> 
-		<?php require './admin/partials/admin_navbar.php'; ?>
-
 		<main class="main-content bgc-grey-100">
 			<div id="mainContent">
 			<!-- CODE HERE -->
@@ -37,7 +37,8 @@
                     </thead>
                     <tbody>
                     	<?php
-                                $myQry = $fungsi->getDataReserved();
+                                //$myQry = $fungsi->getAllDataReserved();
+                                $myQry = $fungsi->getDataReserved(date("Y/m/d"));
                                 while ($kolomData = mysql_fetch_array($myQry)) {
                                     ?>
 
@@ -61,9 +62,5 @@
 			</div>
 		</main>
 		
-	</div>
-<?php
-require "./admin/partials/footer.php";
-?>
-</body>
+
 </html>

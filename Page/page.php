@@ -1,5 +1,6 @@
 <?php
-if (isset($_GET['page'])) {
+
+if ($_GET) {
     // Jika mendapatkan variabel URL ?page
     switch ($_GET['page']) {
 
@@ -21,10 +22,10 @@ if (isset($_GET['page'])) {
             include "admins_home.php";
             break;
 
-        case 'LoginAdmin' :
-            if (!file_exists("admin/index.php"))
+        case 'HalamanClient' :
+            if (!file_exists("clients_home.php"))
                 die("Sorry Empty Page!");
-            include "admin/index.php";
+            include "clients_home.php";
             break;
 
         case 'Logout' :
@@ -69,15 +70,46 @@ if (isset($_GET['page'])) {
             include "show_ruangan.php";
             break;
 
-        default:
-            if (!file_exists("clients_home.php"))
+        case 'Login' :
+            if (!file_exists("login.php"))
                 die("Sorry Empty Page!");
-            include "clients_home.php";
+            include "login.php";
+            break;
+
+        case 'TambahRuangan' :
+            if (!file_exists("tambah_ruangan.php"))
+                die("Sorry Empty Page!");
+            include "tambah_ruangan.php";
+            break;
+
+        case 'UpdateRuangan' :
+            if (!file_exists("update_ruangan.php"))
+                die("Sorry Empty Page!");
+            include "update_ruangan.php";
+            break;
+
+        case 'DeleteRuangan' :
+            if (!file_exists("delete_ruangan.php"))
+                die("Sorry Empty Page!");
+            include "delete_ruangan.php";
+            break;
+
+        case 'DataHimpunan' :
+            if (!file_exists("show_himpunan.php"))
+                die("Sorry Empty Page!");
+            include "show_himpunan.php";
+            break;
+
+        case 'ResetPassword' :
+            if (!file_exists("reset_pass.php"))
+                die("Sorry Empty Page!");
+            include "reset_pass.php";
+            break;
     }
 } else {
     if (!file_exists("clients_home.php"))
         die("Empty Main Page!");
-    
+
     include "clients_home.php";
 }
 ?>
