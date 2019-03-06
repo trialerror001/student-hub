@@ -6,10 +6,11 @@
         include "./admin/partials/header.php";
         
         ?>
-    </head>
-    <body>
 
-    </body>
+        <?php
+        include "./admin/partials/footer.php";
+        ?>
+    </head>
     <body class="app">
         <div class="page-container">
             <?php
@@ -18,8 +19,5 @@
             <?php include './Page/page.php' ?>
             
         </div>
-        <?php
-        include "./admin/partials/footer.php";
-        ?>
     </body>
 </html>

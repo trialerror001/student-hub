@@ -80,10 +80,13 @@ class DB_Functions {
         $result = mysql_query("SELECT * FROM tb_request where md5(id_request) = '$IdRequest' Order By tanggal_permohonan ASC ");
         return $result;
     }
-
+    //Ini Bermasalah
     function cekTanggal($Ruangan, $TanggalSelesai, $WaktuSelesai) {
-        $result = mysql_query("SELECT * FROM tb_observasi WHERE kd_ruangan = '$Ruangan' AND '$TanggalSelesai' "
-                . "BETWEEN `tanggal_pinjam` AND `tanggal_selesai` AND '$WaktuSelesai' BETWEEN `waktu_pinjam` AND `waktu_selesai`");
+        // $result = mysql_query("SELECT * FROM tb_observasi WHERE kd_ruangan = '$Ruangan' AND '$TanggalSelesai' "
+        //         . "BETWEEN `tanggal_pinjam` AND `tanggal_selesai` AND '$WaktuSelesai' BETWEEN `waktu_pinjam` AND `waktu_selesai`");
+
+        $result = mysql_query("SELECT * FROM (SELECT * FROM tb_observasi WHERE kd_ruangan='$Ruangan' AND '$TanggalSelesai' BETWEEN tanggal_pinjam AND tanggal_selesai) t1 LEFT JOIN
+(SELECT * FROM tb_observasi WHERE kd_ruangan='$Ruangan' AND '$WaktuSelesai' BETWEEN waktu_pinjam AND waktu_selesai) t2 ON (t1.`kd_peminjaman` = t2.`kd_peminjaman`);");
 
         return $result;
     }

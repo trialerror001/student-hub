@@ -13,6 +13,7 @@
         
     </head>
     <main class="main-content bgc-grey-100">
+        
         <div id="mainContent">
             <!-- CODE HERE -->
             <div class="row">
@@ -20,17 +21,17 @@
                     <script>
                         $(function () {
                         $('#calendar').fullCalendar({
-                    /*eventClick: function(event){
+                    eventClick: function(event){
                               if(event){
                                 return false;
                             }
                             },
-                    eventLimit: true, // for all non-agenda views
+                            eventLimit: true, // for all non-agenda views
                             views: {
-                            agenda: {
-                            eventLimit: 6 // adjust to 6 only for agendaWeek/agendaDay
-                            }
-                            },*/
+                                agenda: {
+                                    eventLimit: 6 // adjust to 6 only for agendaWeek/agendaDay
+                                }
+                            },
                         events: [
                         <?php
                         $myQry = $fungsi->getAllDataReserved();
