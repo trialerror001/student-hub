@@ -21,17 +21,24 @@ if (isset($_POST['btnLogin'])) {
         if ($_SESSION['level'] == "admin") {
             ?>
             <script>
-                document.location = "?page=HalamanAdmin";
+                document.location = "?page=HomePage";
             </script>
             <?php
 
         } else if ($_SESSION['level'] == "himpunan") {
+            $_SESSION['organisasi'] = $row['nama_organisasi'];
             ?>
             <script>
-                document.location = "?page=HalamanClient";
+                document.location = "?page=HomePage";
             </script>
             <?php
 
+        } else if($_SESSION['level']=="kabid"){
+            ?>
+            <script>
+                document.location = "?page=HomePage";
+            </script>
+            <?php            
         }
     } else {
         ?>

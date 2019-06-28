@@ -16,12 +16,18 @@ if ($_GET) {
             include "form_regis.php";
             break;
 
-        case 'HalamanAdmin' :
-            if (!file_exists("admins_home.php"))
+        case 'HomePage' :
+            if (!file_exists("home_page.php"))
                 die("Sorry Empty Page!");
-            include "admins_home.php";
+            include "home_page.php";
             break;
-
+        
+        case 'HalamanKabid' :
+            if (!file_exists("kabid_home.php"))
+                die("Sorry Empty Page!");
+            include "kabid_home.php";
+            break;
+            
         case 'HalamanClient' :
             if (!file_exists("clients_home.php"))
                 die("Sorry Empty Page!");
@@ -39,7 +45,7 @@ if ($_GET) {
                 die("Sorry Empty Page!");
             include "form_request.php";
             break;
-
+       
         case 'RequestRuangan' :
             if (!file_exists("insert_request.php"))
                 die("Sorry Empty Page!");
@@ -104,6 +110,12 @@ if ($_GET) {
             if (!file_exists("reset_pass.php"))
                 die("Sorry Empty Page!");
             include "reset_pass.php";
+            break;
+            
+        case 'KabidApproval' :
+            if (!file_exists("approvedByKabid.php"))
+                die("Sorry Empty Page!");
+            include "approvedByKabid.php";
             break;
     }
 } else {

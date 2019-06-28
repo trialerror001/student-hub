@@ -43,7 +43,7 @@
                         <li>
                             <a href="" class="d-b td-n pY-5 bgcH-grey-100 c-grey-700">
                                     <!--<i class="ti-power-off mR-10"></i> --> 
-                                <a href="?page=HalamanAdmin"><span>Dashboard</span></a>
+                                <a href="?page=HomePage"><span>Dashboard</span></a>
                             </a>
                         </li>
                 </li>
@@ -96,14 +96,14 @@
                 <?php
             } else if ($_SESSION['level'] == 'himpunan') {
                 ?>
-                <li role="separator" class="divider"></li>
+            <li role="separator" class="divider"></li>
             <li>
                 <a href="" class="d-b td-n pY-5 bgcH-grey-100 c-grey-700">
                         <!--<i class="ti-power-off mR-10"></i>--> 
-                    <a href="?page=HalamanClient"><span>Dashboard</span></a>
+                    <a href="?page=HomePage"><span>Dashboard</span></a>
                 </a>
             </li>
-                <li role="separator" class="divider"></li>
+            <li role="separator" class="divider"></li>
             <li>
                 <a href="" class="d-b td-n pY-5 bgcH-grey-100 c-grey-700">
                         <!--<i class="ti-power-off mR-10"></i>--> 
@@ -111,6 +111,37 @@
                 </a>
             </li>
             <li role="separator" class="divider"></li>
+            <li>
+                <a href="" class="d-b td-n pY-5 bgcH-grey-100 c-grey-700">
+                        <!--<i class="ti-power-off mR-10"></i>--> 
+                    <a href="?page=DataRequest"><span>Your Request</span></a>
+                </a>
+            </li>
+            <li role="separator" class="divider"></li>
+            <li>
+                <a href="" class="d-b td-n pY-5 bgcH-grey-100 c-grey-700">
+                    <!--<i class="ti-power-off mR-10"></i>--> 
+                    <a href="?page=Logout"><span>Logout</span></a>
+                </a>
+            </li>
+                <?php
+            } else if($_SESSION['level']=='kabid'){
+                ?>
+             <li role="separator" class="divider"></li>
+            <li>
+                <a href="" class="d-b td-n pY-5 bgcH-grey-100 c-grey-700">
+                        <!--<i class="ti-power-off mR-10"></i>--> 
+                    <a href="?page=HomePage"><span>Dashboard</span></a>
+                </a>
+            </li>
+             <li role="separator" class="divider"></li>
+            <li>
+                <a href="" class="d-b td-n pY-5 bgcH-grey-100 c-grey-700">
+                        <!--<i class="ti-power-off mR-10"></i>--> 
+                    <a href="?page=DataRequest"><span>Request</span></a>
+                </a>
+            </li>
+             <li role="separator" class="divider"></li>
             <li>
                 <a href="" class="d-b td-n pY-5 bgcH-grey-100 c-grey-700">
                     <!--<i class="ti-power-off mR-10"></i>--> 

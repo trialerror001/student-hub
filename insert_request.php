@@ -13,26 +13,30 @@ if (isset($_POST['submitRequest'])) {
     $Himpunan = $_POST['cmbHimpunan'];
     $Ruangan = $_POST['cmbKodeRuangan'];
     $Keperluan = $_POST['keperluan'];
-    $TanggalMulai = InggrisTgl($_POST['tanggalMulai']);
+    $TanggalPinjam = InggrisTgl($_POST['tanggalMulai']);
     $WaktuMulai = $_POST['cmbWaktuMulai'];
-    $TanggalSelesai = InggrisTgl($_POST['tanggalSelesai']);
-    $WaktuSelesai = $_POST['cmbWaktuSelesai'];
-
-    $result = $fungsi->insertRequest($IdRequest, $Himpunan, $Ruangan, $Keperluan, $TanggalMulai, $WaktuMulai, $TanggalSelesai, $WaktuSelesai);
-
+    $DurasiWaktu = $_POST['cmbDurasiWaktu'];
+    //$WaktuSelesai = $_POST['cmbWaktuSelesai'];
+    $WaktuSelesai = strtotime($DurasiWaktu, strtotime($WaktuMulai));
+    $Action = "Pending";
+    
+    $result = $fungsi->insertRequest($IdRequest, $Himpunan, $Ruangan, $Keperluan, $TanggalPinjam, $DurasiWaktu, $WaktuMulai, date('h:i:s', $WaktuSelesai), $Action);
+    
     if ($result) {
         ?>
           <script>
                 swal("Terima Kasih!", "Permohonan Anda Telah Terkirim", "success");
-                //alert('Permohonan Pemi    njaman Ruangan Sudah Tersimpan');
                 setTimeout(function () {
                         window.location = "?page=HalamanClient"
                     }, 3000);
-            </script>
+        
+          </script>
       
 
         <?php
 
+    }else{
+        echo mysql_error();
     }
 }
 ?>

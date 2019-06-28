@@ -61,32 +61,47 @@ class DB_Functions {
 		<option value='15:30:00'>15.30</option>
 		<option value='16:00:00'>16.00</option>";
     }
+    
+     function durasiWaktu() {
+        echo   "<option value='30 minutes'>30 Menit</option>
+		<option value='60 minutes'>60 Menit</option>
+		<option value='90 minutes'>90 Menit</option>
+		<option value='120 minutes'>120 Menit</option>";
+		
+    }
 
-    function insertRequest($IdRequest, $Himpunan, $Ruangan, $Keperluan, $TanggalMulai, $WaktuMulai, $TanggalSelesai, $WaktuSelesai) {
+    function insertRequest($IdRequest, $Himpunan, $Ruangan, $Keperluan, $TanggalPinjam, $DurasiWaktu, $WaktuMulai, $WaktuSelesai, $Action) {
         $result = mysql_query("INSERT into tb_request (id_request, nama_organisasi, kd_ruangan, "
-                . "keperluan, tanggal_permohonan, tanggal_pinjam, tanggal_selesai, waktu_mulai, "
+                . "keperluan, tanggal_permohonan, tanggal_pinjam, durasiWaktu, waktu_mulai, "
                 . "waktu_selesai, action) Values ('$IdRequest', '$Himpunan', '$Ruangan', '$Keperluan', "
-                . "date(curdate()), '$TanggalMulai', '$TanggalSelesai', '$WaktuMulai', "
-                . "'$WaktuSelesai','')");
+                . "date(curdate()), '$TanggalPinjam', '$DurasiWaktu', '$WaktuMulai', "
+                . "'$WaktuSelesai','$Action')");
         return $result;
     }
 
     function getDataRequest() {
-        $result = mysql_query("SELECT * FROM tb_request where action='' Order By tanggal_permohonan ASC ");
+        $result = mysql_query("SELECT * FROM tb_request where action='Pending' Order By id_request ASC ");
         return $result;
     }
-
+    
+    function getDataRequestByHimpunan($Organisasi) {
+        $result = mysql_query("SELECT * FROM tb_request where nama_organisasi = '$Organisasi' Order By tanggal_permohonan ASC ");
+        return $result;
+    }
+    
     function getRequestById($IdRequest) {
         $result = mysql_query("SELECT * FROM tb_request where md5(id_request) = '$IdRequest' Order By tanggal_permohonan ASC ");
         return $result;
     }
     //Ini Bermasalah
-    function cekTanggal($Ruangan, $TanggalSelesai, $WaktuSelesai) {
+    function cekTanggal($Ruangan, $WaktuSelesai) {
         // $result = mysql_query("SELECT * FROM tb_observasi WHERE kd_ruangan = '$Ruangan' AND '$TanggalSelesai' "
         //         . "BETWEEN `tanggal_pinjam` AND `tanggal_selesai` AND '$WaktuSelesai' BETWEEN `waktu_pinjam` AND `waktu_selesai`");
 
-        $result = mysql_query("SELECT * FROM (SELECT * FROM tb_observasi WHERE kd_ruangan='$Ruangan' AND '$TanggalSelesai' BETWEEN tanggal_pinjam AND tanggal_selesai) t1 LEFT JOIN
-(SELECT * FROM tb_observasi WHERE kd_ruangan='$Ruangan' AND '$WaktuSelesai' BETWEEN waktu_pinjam AND waktu_selesai) t2 ON (t1.`kd_peminjaman` = t2.`kd_peminjaman`);");
+        //$result = mysql_query("SELECT * FROM (SELECT * FROM tb_observasi WHERE kd_ruangan='$Ruangan' AND '$TanggalSelesai' BETWEEN tanggal_pinjam AND tanggal_selesai) t1 LEFT JOIN
+//(SELECT * FROM tb_observasi WHERE kd_ruangan='$Ruangan' AND '$WaktuSelesai' BETWEEN waktu_pinjam AND waktu_selesai) t2 ON (t1.`kd_peminjaman` = t2.`kd_peminjaman`);");
+        
+        $result = mysql_query("SELECT * FROM tb_observasi WHERE kd_ruangan='$Ruangan' AND '$WaktuSelesai' BETWEEN waktu_pinjam AND waktu_selesai");
 
         return $result;
     }
@@ -97,7 +112,8 @@ class DB_Functions {
     }
 
     function updateAction($idRequest, $action){
-        $result = mysql_query("Update tb_request SET action = '$action' where id_request = '$idRequest'");
+        $result = mysql_query("Update tb_request SET action = '$action' where md5(id_request) = '$idRequest'");
+        return $result;
     }
     
     function getAllDataReserved() {

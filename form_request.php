@@ -14,25 +14,28 @@
         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
         <script>
             $(function () {
-                var dateFormat = "mm/dd/yy",
+                //var dateFormat = "dd/mm/yy",
                         from = $("#from")
                         .datepicker({
                             defaultDate: "+1w",
                             changeMonth: true,
                             numberOfMonths: 1,
-                            minDate: "today"
+                            minDate: "+3D",
+                            maxDate: "+1M",
+                            dateFormat: "dd-mm-yy"
                         })
                         .on("change", function () {
-                            to.datepicker("option", "minDate", getDate(this));
-                        }),
-                        to = $("#to").datepicker({
+                            //to.datepicker("option","minDate", getDate(this));
+                            from.datepicker("option","minDate", getDate(this));
+                        });
+                        /*to = $("#to").datepicker({
                             defaultDate: "+1w",
                             changeMonth: true,
                             numberOfMonths: 1,
                         })
                         .on("change", function () {
                             from.datepicker("option", "maxDate", getDate(this));
-                        });
+                        });*/
 
                 function getDate(element) {
                     var date;
@@ -79,17 +82,24 @@
                                                 <?php $fungsi->waktuPeminjaman(); ?>
                                             </select>
                                         </div>
-
+                                        
                                         <div class="form-group col-md-2" style="font-size: 1vw">
+                                            <label for="inputCity">Durasi Waktu</label>
+                                            <select name="cmbDurasiWaktu" class="form-control">
+                                                <?php $fungsi->durasiWaktu(); ?>
+                                            </select>
+                                        </div>
+
+                                        <!--<div class="form-group col-md-2" style="font-size: 1vw">
                                             <label for="inputZip">Sampai Tanggal</label> 
                                             <input type="text" id="to" class="form-control bdc-grey-200" placeholder="When?" name="tanggalSelesai">
                                         </div>
 
                                         <div class="form-group col-md-2" style="font-size: 1vw"><label for="inputCity">Jam</label> 
                                             <select name="cmbWaktuSelesai" class="form-control">
-                                                <?php $fungsi->waktuPeminjaman(); ?>
+                                                <?php //$fungsi->waktuPeminjaman(); ?>
                                             </select>
-                                        </div>
+                                        </div>-->
 
                                     </div>
 
