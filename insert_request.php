@@ -27,7 +27,7 @@ if (isset($_POST['submitRequest'])) {
           <script>
                 swal("Terima Kasih!", "Permohonan Anda Telah Terkirim", "success");
                 setTimeout(function () {
-                        window.location = "?page=HalamanClient"
+                        window.location = "?page=HomePage"
                     }, 3000);
         
           </script>

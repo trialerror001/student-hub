@@ -5,7 +5,7 @@
         <?php
         include "./fungsi/fungsi.php";
         $fungsi = new DB_Functions();
-        include "./library/inc.seslogin.php";
+        //include "./library/inc.seslogin.php";
         ?>
     <link rel='stylesheet' href='fullcalendar/dist/fullcalendar.css' />
     <script src='lib/jquery.min.js'></script>
@@ -32,8 +32,8 @@
                                 title: '<?php echo $kolomData['waktu_pinjam']."-".$kolomData['waktu_selesai']." / ".$kolomData['kd_ruangan'] ?>\n\
                                          <?php echo $kolomData['keperluan'] ?>',
 
-                                start: '<?php echo $kolomData['tanggal_pinjam'] ?>',
-                                end: '<?php echo $kolomData['tanggal_selesai'] ?>'
+                                start: '<?php echo $kolomData['tanggal_pinjam'] ?>'
+                                
                                 },
 
                                     <?php

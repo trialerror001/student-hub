@@ -17,7 +17,7 @@ if (isset($_POST['resetPass'])) {
             swal("Berhasil!", "Password Berhasil Diubah", "success");
             //alert('Permohonan Pemi    njaman Ruangan Sudah Tersimpan');
             setTimeout(function () {
-                window.location = "?page=HalamanAdmin"
+                window.location = "?page=HomePage"
             }, 2000);
         </script>
         <?php
@@ -27,7 +27,7 @@ if (isset($_POST['resetPass'])) {
             swal("Gagal!", "Password Tidak Sesuai", "error");
             //alert('Permohonan Pemi    njaman Ruangan Sudah Tersimpan');
             setTimeout(function () {
-                window.location = "?page=HalamanAdmin"
+                window.location = "?page=HomePage"
             }, 2000);
         </script>
         <?php

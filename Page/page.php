@@ -117,11 +117,17 @@ if ($_GET) {
                 die("Sorry Empty Page!");
             include "approvedByKabid.php";
             break;
+            
+        case 'ObserveByAdmin' :
+            if (!file_exists("observasiByAdmin.php"))
+                die("Sorry Empty Page!");
+            include "observasiByAdmin.php";
+            break;
     }
 } else {
-    if (!file_exists("clients_home.php"))
+    if (!file_exists("home_page.php"))
         die("Empty Main Page!");
 
-    include "clients_home.php";
+    include "home_page.php";
 }
 ?>

@@ -9,7 +9,7 @@ class DB_Functions {
     function namaHimpunan() {
         echo "
          <select name='cmbHimpunan' class='form-control'>";
-        $sql = mysql_query("Select nama_organisasi from tb_organisasi");
+        $sql = mysql_query("Select nama_organisasi from tb_organisasi where level = 'himpunan'");
         while ($data = mysql_fetch_array($sql)) {
             $nilai = $data['nama_organisasi'];
             if ($data['nama_organisasi'] == $nilai)
@@ -84,6 +84,11 @@ class DB_Functions {
         return $result;
     }
     
+    function getDataReservedForAdmin() {
+        $result = mysql_query("SELECT a.kd_peminjaman, b.nama_organisasi, a.kd_ruangan, b.keperluan, a.tanggal_pinjam, a.waktu_pinjam, a.waktu_selesai FROM tb_observasi as a JOIN tb_request as b where a.id_request = b.id_request AND status_peminjaman='Reserved' Order By kd_peminjaman ASC ");
+        return $result;
+    }
+    
     function getDataRequestByHimpunan($Organisasi) {
         $result = mysql_query("SELECT * FROM tb_request where nama_organisasi = '$Organisasi' Order By tanggal_permohonan ASC ");
         return $result;
@@ -93,21 +98,38 @@ class DB_Functions {
         $result = mysql_query("SELECT * FROM tb_request where md5(id_request) = '$IdRequest' Order By tanggal_permohonan ASC ");
         return $result;
     }
+    
+    function getObservasi($KdPeminjaman) {
+        $result = mysql_query("SELECT * FROM tb_observasi where md5(kd_peminjaman) = '$KdPeminjaman'");
+        return $result;
+    }
     //Ini Bermasalah
-    function cekTanggal($Ruangan, $WaktuSelesai) {
+    function cekTanggal($TanggalPinjam, $Ruangan, $WaktuPinjam) {
         // $result = mysql_query("SELECT * FROM tb_observasi WHERE kd_ruangan = '$Ruangan' AND '$TanggalSelesai' "
         //         . "BETWEEN `tanggal_pinjam` AND `tanggal_selesai` AND '$WaktuSelesai' BETWEEN `waktu_pinjam` AND `waktu_selesai`");
 
         //$result = mysql_query("SELECT * FROM (SELECT * FROM tb_observasi WHERE kd_ruangan='$Ruangan' AND '$TanggalSelesai' BETWEEN tanggal_pinjam AND tanggal_selesai) t1 LEFT JOIN
 //(SELECT * FROM tb_observasi WHERE kd_ruangan='$Ruangan' AND '$WaktuSelesai' BETWEEN waktu_pinjam AND waktu_selesai) t2 ON (t1.`kd_peminjaman` = t2.`kd_peminjaman`);");
         
-        $result = mysql_query("SELECT * FROM tb_observasi WHERE kd_ruangan='$Ruangan' AND '$WaktuSelesai' BETWEEN waktu_pinjam AND waktu_selesai");
+        $result = mysql_query("SELECT * FROM tb_observasi WHERE tanggal_pinjam='$TanggalPinjam' AND kd_ruangan='$Ruangan' AND '$WaktuPinjam' >= waktu_pinjam AND '$WaktuPinjam' < waktu_selesai AND status_peminjaman = 'Reserved' ");
+
+        return $result;
+    }
+    
+    function cekTanggalByAdmin($TanggalPinjam, $Ruangan, $WaktuPinjam) {
+        // $result = mysql_query("SELECT * FROM tb_observasi WHERE kd_ruangan = '$Ruangan' AND '$TanggalSelesai' "
+        //         . "BETWEEN `tanggal_pinjam` AND `tanggal_selesai` AND '$WaktuSelesai' BETWEEN `waktu_pinjam` AND `waktu_selesai`");
+
+        //$result = mysql_query("SELECT * FROM (SELECT * FROM tb_observasi WHERE kd_ruangan='$Ruangan' AND '$TanggalSelesai' BETWEEN tanggal_pinjam AND tanggal_selesai) t1 LEFT JOIN
+//(SELECT * FROM tb_observasi WHERE kd_ruangan='$Ruangan' AND '$WaktuSelesai' BETWEEN waktu_pinjam AND waktu_selesai) t2 ON (t1.`kd_peminjaman` = t2.`kd_peminjaman`);");
+        
+        $result = mysql_query("SELECT * FROM tb_observasi WHERE tanggal_pinjam='$TanggalPinjam' AND kd_ruangan='$Ruangan' AND '$WaktuPinjam' >= waktu_pinjam AND '$WaktuPinjam' < waktu_selesai AND status_peminjaman = 'Approved' ");
 
         return $result;
     }
 
-    function insertObservasi($KdPinjam, $IdRequest, $Ruangan, $TanggalMulai, $WaktuMulai, $TanggalSelesai, $WaktuSelesai) {
-        $result = mysql_query("INSERT into tb_observasi (kd_peminjaman, id_request, kd_ruangan, tanggal_pinjam, tanggal_selesai, waktu_pinjam, waktu_selesai, status_peminjaman) Values ('$KdPinjam', '$IdRequest', '$Ruangan', '$TanggalMulai', '$TanggalSelesai', '$WaktuMulai', '$WaktuSelesai','Reserved')");
+    function insertObservasi($KdPinjam, $IdRequest, $Ruangan, $TanggalMulai, $WaktuMulai, $WaktuSelesai, $Action) {
+        $result = mysql_query("INSERT into tb_observasi (kd_peminjaman, id_request, kd_ruangan, tanggal_pinjam, waktu_pinjam, waktu_selesai, status_peminjaman) Values ('$KdPinjam', '$IdRequest', '$Ruangan', '$TanggalMulai', '$WaktuMulai', '$WaktuSelesai','$Action')");
         return $result;
     }
 
@@ -116,17 +138,22 @@ class DB_Functions {
         return $result;
     }
     
-    function getAllDataReserved() {
-        $result = mysql_query("SELECT a.kd_peminjaman, b.nama_organisasi, a.kd_ruangan, a.tanggal_pinjam, a.tanggal_selesai, time_format(a.waktu_pinjam, '%H:%i') as waktu_pinjam, time_format(a.waktu_selesai, '%H:%i') as waktu_selesai, b.keperluan, a.status_peminjaman FROM tb_observasi as a JOIN tb_request as b WHERE a.id_request = b.id_request Order By kd_peminjaman ASC ");
+     function updateStatusPeminjaman($kdPeminjaman, $action){
+        $result = mysql_query("Update tb_observasi SET status_peminjaman = '$action' where md5(kd_peminjaman) = '$kdPeminjaman'");
         return $result;
     }
     
-    function getDataReserved($today) {
-        $result = mysql_query("SELECT a.*, b.nama_organisasi, a.kd_ruangan, a.tanggal_pinjam, "
-                . "a.tanggal_selesai, time_format(a.waktu_pinjam, '%H:%i') as waktu_pinjam, "
+    function getAllDataReserved() {
+        $result = mysql_query("SELECT a.kd_peminjaman, b.nama_organisasi, a.kd_ruangan, a.tanggal_pinjam, time_format(a.waktu_pinjam, '%H:%i') as waktu_pinjam, time_format(a.waktu_selesai, '%H:%i') as waktu_selesai, b.keperluan, a.status_peminjaman FROM tb_observasi as a JOIN tb_request as b WHERE a.id_request = b.id_request AND a.status_peminjaman = 'Approved' Order By kd_peminjaman ASC ");
+        return $result;
+    }
+    
+    function getDataReserved() {
+        $result = mysql_query("SELECT a.kd_peminjaman, b.nama_organisasi, a.kd_ruangan, a.tanggal_pinjam, "
+                . "time_format(a.waktu_pinjam, '%H:%i') as waktu_pinjam, "
                 . "time_format(a.waktu_selesai, '%H:%i') as waktu_selesai, b.keperluan, a.status_peminjaman "
                 . "FROM tb_observasi as a JOIN tb_request as b WHERE a.id_request = b.id_request "
-                . "AND a.tanggal_selesai >= '$today' Order By kd_peminjaman ASC ");
+                . "Order By kd_peminjaman ASC ");
         return $result;
     }
 

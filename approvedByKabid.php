@@ -9,18 +9,21 @@ $fungsi = new DB_Functions();
 
 $action = isset($_GET['Action']) ? $_GET['Action'] : '';
 $REQ = isset($_GET['REQ']) ? $_GET['REQ'] : '';
+$KodePinjam = buatKode("tb_observasi", "OBS");
 
 $myQry = $fungsi->getRequestById($REQ);
 $kolomData = mysql_fetch_array($myQry);
 
+$KodePinjam = buatKode("tb_observasi", "OBS");
 $idRequest = $kolomData['id_request'];
 $ruangan = $kolomData['kd_ruangan'];
 $tanggalPinjam = $kolomData['tanggal_pinjam'];
 $waktuMulai = $kolomData['waktu_mulai'];
 $waktuSelesai = $kolomData['waktu_selesai'];
+$status = "Reserved";
 
 if ($action == 'Approved') {
-    $result = $fungsi->cekTanggal($ruangan, $waktuSelesai);
+    $result = $fungsi->cekTanggal($tanggalPinjam,$ruangan, $waktuMulai);
     if (mysql_num_rows($result) >= 1) {
         $pesanError = array();
         $pesanError[] = "Maaf, Ruangan $ruangan Pada Jadwal Tersebut Sedang Digunakan";
@@ -38,6 +41,7 @@ if ($action == 'Approved') {
         }
       
     } else {
+        $fungsi->insertObservasi($KodePinjam, $idRequest, $ruangan, $tanggalPinjam, $waktuMulai, $waktuSelesai, $status);
         $result = $fungsi->updateAction($REQ, "Process");
         if ($result) {
             ?>

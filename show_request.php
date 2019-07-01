@@ -33,32 +33,35 @@
                         <th>Kode Request</th>
                         <th>Organisasi</th>
                         <th>Ruangan</th>
-                        <th>Tanggal & Waktu Pinjam</th>
-                        <th>Tanggal & Waktu Selesai</th>
                         <th>Kegiatan</th>
+                        <th>Tanggal Pinjam</th>
+                        <th>Waktu Mulai</th>
+                        <th>Waktu Selesai</th>
                         <th>Approve</th>
                         <th>Denied</th>
                         </thead>
                         <tbody>
                             <?php
-                            $myQry = $fungsi->getDataRequest();
+                            $myQry = $fungsi->getDataReservedForAdmin();
                             while ($kolomData = mysql_fetch_array($myQry)) {
                                 //print_r($kolomData);
                                 ?>
                                 <tr>
-                                    <td><?php echo $kolomData['id_request']; ?></td>
+                                    <td><?php echo $kolomData['kd_peminjaman']; ?></td>
                                     <td><?php echo $kolomData['nama_organisasi']; ?></td>
                                     <td><?php echo $kolomData['kd_ruangan']; ?></td>
-                                    <td><?php echo IndonesiaTgl($kolomData['tanggal_pinjam']) . " [" . $kolomData['waktu_mulai'] . "]" ?></td>
-                                    <td><?php echo IndonesiaTgl($kolomData['tanggal_selesai']) . " [" . $kolomData['waktu_selesai'] . "]" ?></td>
                                     <td><?php echo $kolomData['keperluan']; ?></td>
+                                    <td><?php echo IndonesiaTgl($kolomData['tanggal_pinjam']) ?></td>
+                                    <td><?php echo date('h:i', strtotime($kolomData['waktu_pinjam'])); ?></td>
+                                    <td><?php echo date('h:i', strtotime($kolomData['waktu_selesai'])); ?></td>
+                                    
                                     <td>
-                                        <a href="?page=AcceptRequest&REQ=<?php echo md5($kolomData['id_request']); ?>&Action=Approved">
+                                        <a href="?page=AcceptRequest&REQ=<?php echo md5($kolomData['kd_peminjaman']); ?>&Action=Approved">
                                             <img src="images/approve.png" width="50" height="50" />
                                         </a>
                                     </td>   
                                     <td>
-                                        <a href="?page=AcceptRequest&REQ=<?php echo md5($kolomData['id_request']); ?>&Action=Denied">
+                                        <a href="?page=AcceptRequest&REQ=<?php echo md5($kolomData['kd_peminjaman']); ?>&Action=Denied">
                                             <img src="images/denied.png" width="50" height="50" />
                                         </a>
                                     </td>
@@ -126,6 +129,7 @@
                         <th>Kode Request</th>
                         <th>Organisasi</th>
                         <th>Ruangan</th>
+                        <th>Kegiatan</th>
                         <th>Tanggal Permohonan</th>
                         <th>Tanggal Peminjaman</th>
                         <th>Waktu</th>
@@ -143,10 +147,11 @@
                                    <td><?php echo $kolomData['id_request']; ?></td>
                                     <td><?php echo $kolomData['nama_organisasi']; ?></td>
                                     <td><?php echo $kolomData['kd_ruangan']; ?></td>
+                                    <td><?php echo $kolomData['keperluan']; ?></td>
                                     <td><?php echo IndonesiaTgl($kolomData['tanggal_permohonan']) ?></td>
                                     <td><?php echo IndonesiaTgl($kolomData['tanggal_pinjam']) ?></td>
-                                    <td><?php echo $kolomData['waktu_mulai']; ?></td>
-                                    <td><?php echo $kolomData['durasiWaktu']; ?></td>
+                                    <td><?php echo date('h:i', strtotime($kolomData['waktu_mulai'])); ?></td>
+                                    <td><?php echo date('h:i', strtotime($kolomData['waktu_selesai'])); ?></td>
                                     <td>
                                         <a href="?page=KabidApproval&REQ=<?php echo md5($kolomData['id_request']); ?>&Action=Approved">
                                             <img src="images/approve.png" width="50" height="50" />

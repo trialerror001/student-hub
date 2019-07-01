@@ -26,19 +26,20 @@
 			<!-- CODE HERE -->
 				<table class="display table table-striped table-bordered" id="datatable">
                     <thead>
-                    	<th>Kode Request</th>
+                    	<th>Kode Peminjaman</th>
                     	<th>Organisasi</th>
                     	<th>Ruangan</th>
-                    	<th>Tanggal & Waktu Pinjam</th>
-                    	<th>Tanggal & Waktu Selesai</th>
-                    	<th>Kegiatan</th>
+                        <th>Kegiatan</th>
+                    	<th>Tanggal Pinjam</th>
+                        <th>Waktu Mulai</th>
+                    	<th>Waktu Selesai</th>
                     	<th>Status</th>
                     	
                     </thead>
                     <tbody>
                     	<?php
                                 //$myQry = $fungsi->getAllDataReserved();
-                                $myQry = $fungsi->getDataReserved(date("Y/m/d"));
+                                $myQry = $fungsi->getDataReserved();
                                 while ($kolomData = mysql_fetch_array($myQry)) {
                                     ?>
 
@@ -46,9 +47,10 @@
                                         <td><?php echo $kolomData['kd_peminjaman']; ?></td>
                                         <td><?php echo $kolomData['nama_organisasi']; ?></td>
                                         <td><?php echo $kolomData['kd_ruangan']; ?></td>
-                                        <td><?php echo IndonesiaTgl($kolomData['tanggal_pinjam'])." [".$kolomData['waktu_pinjam']."]" ?></td>
-                                        <td><?php echo IndonesiaTgl($kolomData['tanggal_selesai'])." [".$kolomData['waktu_selesai']."]" ?></td>
                                         <td><?php echo $kolomData['keperluan']; ?></td>
+                                        <td><?php echo IndonesiaTgl($kolomData['tanggal_pinjam'])?></td>
+                                        <td><?php echo $kolomData['waktu_pinjam'] ?></td>
+                                        <td><?php echo $kolomData['waktu_selesai'] ?></td>
                                         <td><?php echo $kolomData['status_peminjaman']; ?></td>
                                         
                                        

@@ -4,80 +4,64 @@
 <?php
 include "./library/inc.library.php";
 include "./fungsi/fungsi.php";
-$fungsi = new DB_Functions();
 
-$KodePinjam = buatKode("tb_observasi", "OBS");
-$REQ = isset($_GET['REQ']) ? $_GET['REQ'] : '';
-$action = isset($_GET['Action']) ? $_GET['Action'] : '';
-$myQry = $fungsi->getRequestById($REQ);
-$kolomData = mysql_fetch_array($myQry);
+if ($_SESSION['level'] == 'admin') {
+    $fungsi = new DB_Functions();
 
-$idRequest = $kolomData['id_request'];
-$ruangan = $kolomData['kd_ruangan'];
-$tanggalPinjam = $kolomData['tanggal_pinjam'];
-$tanggalSelesai = $kolomData['tanggal_selesai'];
-$waktuMulai = $kolomData['waktu_mulai'];
-$waktuSelesai = $kolomData['waktu_selesai'];
-if ($action == 'Approved') {
-    $result = $fungsi->cekTanggal($ruangan, $tanggalSelesai, $waktuSelesai);
-    if (mysql_num_rows($result) >= 1) {
-        $pesanError = array();
-        $pesanError[] = "Maaf, Ruangan $ruangan Pada Jadwal Tersebut Sedang Digunakan";
+    $REQ = isset($_GET['REQ']) ? $_GET['REQ'] : '';
+    $action = isset($_GET['Action']) ? $_GET['Action'] : '';
+    
+    $myQry = $fungsi->getObservasi($REQ);
+    $kolomData = mysql_fetch_array($myQry);
 
-        if (count($pesanError) >= 1) {
-            echo "<div class='mssgBox'>";
-            echo "<img src='images/attention.png' width='50px'> <br><hr>";
-            $noPesan = 0;
-            foreach ($pesanError as $indeks => $pesan_tampil) {
-                $noPesan++;
-                echo "&nbsp;&nbsp; $noPesan. $pesan_tampil<br>";
-            }
-            echo "</div> <br>";
-            echo "<a href=?page=DataRequest>Kembali Ke Form</a>";
-        }
-      
-    } else {
-        $result = $fungsi->insertObservasi($KodePinjam, $idRequest, $ruangan, $tanggalPinjam, $waktuMulai, $tanggalSelesai, $waktuSelesai);
+    $idRequest = $kolomData['id_request'];
+    $kolomData = mysql_fetch_array($myQry);
+    
+    //echo $idRequest;
+    if ($action == 'Approved') {
+        $result = $fungsi->updateStatusPeminjaman($REQ, $action);
+        $fungsi->updateAction(md5($idRequest), $action);
         if ($result) {
             ?>
             <script>
-                swal("Terima Kasih!", "Ruangan sudah direserve", "success");
+                swal("Terima Kasih!", "Ruangan Berhasil Direserve", "success");
                 //alert('Permohonan Pemi    njaman Ruangan Sudah Tersimpan');
                 setTimeout(function () {
-                        window.location = "?page=DataRequest"
-                    }, 3000);
+                    window.location = "?page=DataRequest"
+                }, 3000);
             </script>
             <?php
         }
-        $fungsi->updateAction($idRequest, $action);
+        
+
         //nanti disini ditambahkan dengan pengiriman email
+    } else if ($action == 'Denied') {
+        ?>
+        <script>
+
+            swal("Tuliskan alasan anda:", {
+                content: "input",
+            })
+                    .then((value) => {
+                        //swal(`You typed: ${value}`);
+                        swal('Respon anda telah dikirim');
+                        setTimeout(function () {
+                            window.location = "?page=DataRequest"
+                        }, 2000);
+                    });
+        </script>
+        <?php
+        $to = "ferdian.aditya2302@gmail.com";
+        $subject = "Penolakan Peminjaman Ruangan";
+        $txt = "Maaf, ruangan sedang tidak tersedia";
+
+        //nanti disini diganti dengan pengiriman email
+        //echo "<script>alert('Maaf, Peminjaman anda kami tolak')</script>";
+        $fungsi->updateStatusPeminjaman($REQ, $action);
+        //mail($to, $subject, $txt);
+        ?>
+
+        <?php
     }
-} else if ($action == 'Denied') {
-    ?>
-    <script>
-
-        swal("Tuliskan alasan anda:", {
-            content: "input",
-        })
-                .then((value) => {
-                    //swal(`You typed: ${value}`);
-                    swal('Respon anda telah dikirim');
-                    setTimeout(function () {
-                        window.location = "?page=DataRequest"
-                    }, 2000);
-                });
-    </script>
-    <?php
-    $to="ferdian.aditya2302@gmail.com";
-    $subject = "Penolakan Peminjaman Ruangan";
-    $txt = "Maaf, ruangan sedang tidak tersedia";
-    
-    //nanti disini diganti dengan pengiriman email
-    //echo "<script>alert('Maaf, Peminjaman anda kami tolak')</script>";
-    $fungsi->updateAction($idRequest, $action);
-    //mail($to, $subject, $txt);
-    ?>
-
-    <?php
-}
+} 
 ?>

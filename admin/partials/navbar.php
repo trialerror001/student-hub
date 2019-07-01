@@ -62,6 +62,13 @@
                         <a href="?page=DataReserved"><span>Reserved</span></a>
                     </a>
                 </li>
+                <li role="separator" class="divider"></li>
+                <li>
+                    <a href="" class="d-b td-n pY-5 bgcH-grey-100 c-grey-700">
+                            <!--<i class="ti-power-off mR-10"></i>--> 
+                        <a href="?page=FormRequest"><span>Room Booking</span></a>
+                    </a>
+                </li>
                 </li>
                 <li role="separator" class="divider"></li>
                 <li>
@@ -78,7 +85,7 @@
                         <a href="?page=DataHimpunan"><span>Himpunan</span></a>
                     </a>
                 </li>
-                
+
                 <!--<li role="separator" class="divider"></li>
                 <li>
                     <a href="" class="d-b td-n pY-5 bgcH-grey-100 c-grey-700">
@@ -96,58 +103,58 @@
                 <?php
             } else if ($_SESSION['level'] == 'himpunan') {
                 ?>
-            <li role="separator" class="divider"></li>
-            <li>
-                <a href="" class="d-b td-n pY-5 bgcH-grey-100 c-grey-700">
+                <li role="separator" class="divider"></li>
+                <li>
+                    <a href="" class="d-b td-n pY-5 bgcH-grey-100 c-grey-700">
+                            <!--<i class="ti-power-off mR-10"></i>--> 
+                        <a href="?page=HomePage"><span>Dashboard</span></a>
+                    </a>
+                </li>
+                <li role="separator" class="divider"></li>
+                <li>
+                    <a href="" class="d-b td-n pY-5 bgcH-grey-100 c-grey-700">
+                            <!--<i class="ti-power-off mR-10"></i>--> 
+                        <a href="?page=FormRequest"><span>Room Booking</span></a>
+                    </a>
+                </li>
+                <li role="separator" class="divider"></li>
+                <li>
+                    <a href="" class="d-b td-n pY-5 bgcH-grey-100 c-grey-700">
+                            <!--<i class="ti-power-off mR-10"></i>--> 
+                        <a href="?page=DataRequest"><span>Your Request</span></a>
+                    </a>
+                </li>
+                <li role="separator" class="divider"></li>
+                <li>
+                    <a href="" class="d-b td-n pY-5 bgcH-grey-100 c-grey-700">
                         <!--<i class="ti-power-off mR-10"></i>--> 
-                    <a href="?page=HomePage"><span>Dashboard</span></a>
-                </a>
-            </li>
-            <li role="separator" class="divider"></li>
-            <li>
-                <a href="" class="d-b td-n pY-5 bgcH-grey-100 c-grey-700">
-                        <!--<i class="ti-power-off mR-10"></i>--> 
-                    <a href="?page=FormRequest"><span>Room Booking</span></a>
-                </a>
-            </li>
-            <li role="separator" class="divider"></li>
-            <li>
-                <a href="" class="d-b td-n pY-5 bgcH-grey-100 c-grey-700">
-                        <!--<i class="ti-power-off mR-10"></i>--> 
-                    <a href="?page=DataRequest"><span>Your Request</span></a>
-                </a>
-            </li>
-            <li role="separator" class="divider"></li>
-            <li>
-                <a href="" class="d-b td-n pY-5 bgcH-grey-100 c-grey-700">
-                    <!--<i class="ti-power-off mR-10"></i>--> 
-                    <a href="?page=Logout"><span>Logout</span></a>
-                </a>
-            </li>
+                        <a href="?page=Logout"><span>Logout</span></a>
+                    </a>
+                </li>
                 <?php
-            } else if($_SESSION['level']=='kabid'){
+            } else if ($_SESSION['level'] == 'kabid') {
                 ?>
-             <li role="separator" class="divider"></li>
-            <li>
-                <a href="" class="d-b td-n pY-5 bgcH-grey-100 c-grey-700">
+                <li role="separator" class="divider"></li>
+                <li>
+                    <a href="" class="d-b td-n pY-5 bgcH-grey-100 c-grey-700">
+                            <!--<i class="ti-power-off mR-10"></i>--> 
+                        <a href="?page=HomePage"><span>Dashboard</span></a>
+                    </a>
+                </li>
+                <li role="separator" class="divider"></li>
+                <li>
+                    <a href="" class="d-b td-n pY-5 bgcH-grey-100 c-grey-700">
+                            <!--<i class="ti-power-off mR-10"></i>--> 
+                        <a href="?page=DataRequest"><span>Request</span></a>
+                    </a>
+                </li>
+                <li role="separator" class="divider"></li>
+                <li>
+                    <a href="" class="d-b td-n pY-5 bgcH-grey-100 c-grey-700">
                         <!--<i class="ti-power-off mR-10"></i>--> 
-                    <a href="?page=HomePage"><span>Dashboard</span></a>
-                </a>
-            </li>
-             <li role="separator" class="divider"></li>
-            <li>
-                <a href="" class="d-b td-n pY-5 bgcH-grey-100 c-grey-700">
-                        <!--<i class="ti-power-off mR-10"></i>--> 
-                    <a href="?page=DataRequest"><span>Request</span></a>
-                </a>
-            </li>
-             <li role="separator" class="divider"></li>
-            <li>
-                <a href="" class="d-b td-n pY-5 bgcH-grey-100 c-grey-700">
-                    <!--<i class="ti-power-off mR-10"></i>--> 
-                    <a href="?page=Logout"><span>Logout</span></a>
-                </a>
-            </li>
+                        <a href="?page=Logout"><span>Logout</span></a>
+                    </a>
+                </li>
                 <?php
             }
             ?>
