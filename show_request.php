@@ -61,7 +61,7 @@
                                         </a>
                                     </td>   
                                     <td>
-                                        <a href="?page=AcceptRequest&REQ=<?php echo md5($kolomData['kd_peminjaman']); ?>&Action=Denied">
+                                        <a href="?page=AcceptRequest&REQ=<?php echo md5($kolomData['kd_peminjaman']); ?>&Action=Declined">
                                             <img src="images/denied.png" width="50" height="50" />
                                         </a>
                                     </td>
@@ -158,7 +158,7 @@
                                         </a>
                                     </td>   
                                     <td>
-                                        <a href="?page=AcceptRequest&REQ=<?php echo md5($kolomData['id_request']); ?>&Action=Denied">
+                                        <a href="?page=KabidApproval&REQ=<?php echo md5($kolomData['id_request']); ?>&Action=Declined">
                                             <img src="images/denied.png" width="50" height="50" />
                                         </a>
                                     </td>

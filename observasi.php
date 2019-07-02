@@ -35,7 +35,7 @@ if ($_SESSION['level'] == 'admin') {
         
 
         //nanti disini ditambahkan dengan pengiriman email
-    } else if ($action == 'Denied') {
+    } else if ($action == 'Declined') {
         ?>
         <script>
 
@@ -57,7 +57,8 @@ if ($_SESSION['level'] == 'admin') {
 
         //nanti disini diganti dengan pengiriman email
         //echo "<script>alert('Maaf, Peminjaman anda kami tolak')</script>";
-        $fungsi->updateStatusPeminjaman($REQ, $action);
+        $fungsi->updateAction(md5($idRequest), $action);
+        $fungsi->deleteDataObservasi($REQ);
         //mail($to, $subject, $txt);
         ?>
 

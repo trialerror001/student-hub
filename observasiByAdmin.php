@@ -18,24 +18,29 @@ $WaktuMulai = $_POST['cmbWaktuMulai'];
 $DurasiWaktu = $_POST['cmbDurasiWaktu'];
 //$WaktuSelesai = $_POST['cmbWaktuSelesai'];
 $WaktuSelesai = date('h:i:s', strtotime($DurasiWaktu, strtotime($WaktuMulai)));
-
 $Action = "Approved";
 
-$result = $fungsi->cekTanggalByAdmin($TanggalPinjam, $Ruangan, $WaktuMulai);
-if (mysql_num_rows($result) >= 1) {
+$result = $fungsi->cekWaktuPinjam($TanggalPinjam, $Ruangan, $WaktuMulai);
+$result2 = $fungsi->cekWaktuSelesai($TanggalPinjam, $Ruangan, $WaktuSelesai);
+if (mysql_num_rows($result) || mysql_num_rows($result2) >= 1) {
     $pesanError = array();
     $pesanError[] = "Maaf, Ruangan $Ruangan Pada Jadwal Tersebut Sedang Digunakan";
 
     if (count($pesanError) >= 1) {
-        echo "<div class='mssgBox'>";
-        echo "<img src='images/attention.png' width='50px'> <br><hr>";
-        $noPesan = 0;
-        foreach ($pesanError as $indeks => $pesan_tampil) {
-            $noPesan++;
-            echo "&nbsp;&nbsp; $noPesan. $pesan_tampil<br>";
-        }
-        echo "</div> <br>";
-        echo "<a href=?page=DataRequest>Kembali Ke Form</a>";
+        echo "<main class='main-content bgc-grey-100'>";
+            echo " <div id='mainContent'>";
+            echo "<div class='mssgBox'>";
+            echo "<img src='images/attention.png' width='50px'> <br><hr>";
+            $noPesan = 0;
+            foreach ($pesanError as $indeks => $pesan_tampil) {
+                $noPesan++;
+                echo "&nbsp;&nbsp; $noPesan. $pesan_tampil<br>";
+            }
+            echo "</div> <br>";
+            echo "<a href=?page=FormRequest>Kembali Ke Form</a>";
+              
+            echo "</div>";
+            echo "</main>";
     }
 } else {
     $result = $fungsi->insertRequest($IdRequest, $Himpunan, $Ruangan, $Keperluan, $TanggalPinjam, $DurasiWaktu, $WaktuMulai, $WaktuSelesai, $Action);

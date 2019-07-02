@@ -43,12 +43,12 @@
                             <td><?php echo $kolomData['nama_ruangan']; ?></td>
                             <td><?php echo $kolomData['keterangan']; ?></td>
                             <td>
-                                <a href="?page=UpdateRuangan&Kode=<?php echo md5($kolomData['id']) ?>">
+                                <a href="?page=UpdateRuangan&Kode=<?php echo md5(mb_convert_encoding($kolomData['kd_ruangan'],"UTF-32")) ?>">
                                    <img src="images/update.png" width="50" height="50">
                                 </a>
                             </td>
                             <td>
-                                <a href="?page=DeleteRuangan&Kode=<?php echo md5($kolomData['id']) ?>">
+                                <a href="?page=DeleteRuangan&Kode=<?php echo md5(mb_convert_encoding($kolomData['kd_ruangan'],"UTF-32")) ?>">
                                 <img src="images/delete.png" width="50" height="50">
                                 </a>
                             </td>

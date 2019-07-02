@@ -103,27 +103,27 @@ class DB_Functions {
         $result = mysql_query("SELECT * FROM tb_observasi where md5(kd_peminjaman) = '$KdPeminjaman'");
         return $result;
     }
-    //Ini Bermasalah
-    function cekTanggal($TanggalPinjam, $Ruangan, $WaktuPinjam) {
+        
+    function cekWaktuPinjam($TanggalPinjam, $Ruangan, $WaktuPinjam) {
         // $result = mysql_query("SELECT * FROM tb_observasi WHERE kd_ruangan = '$Ruangan' AND '$TanggalSelesai' "
         //         . "BETWEEN `tanggal_pinjam` AND `tanggal_selesai` AND '$WaktuSelesai' BETWEEN `waktu_pinjam` AND `waktu_selesai`");
 
         //$result = mysql_query("SELECT * FROM (SELECT * FROM tb_observasi WHERE kd_ruangan='$Ruangan' AND '$TanggalSelesai' BETWEEN tanggal_pinjam AND tanggal_selesai) t1 LEFT JOIN
 //(SELECT * FROM tb_observasi WHERE kd_ruangan='$Ruangan' AND '$WaktuSelesai' BETWEEN waktu_pinjam AND waktu_selesai) t2 ON (t1.`kd_peminjaman` = t2.`kd_peminjaman`);");
         
-        $result = mysql_query("SELECT * FROM tb_observasi WHERE tanggal_pinjam='$TanggalPinjam' AND kd_ruangan='$Ruangan' AND '$WaktuPinjam' >= waktu_pinjam AND '$WaktuPinjam' < waktu_selesai AND status_peminjaman = 'Reserved' ");
+        $result = mysql_query("SELECT * FROM tb_observasi WHERE tanggal_pinjam='$TanggalPinjam' AND kd_ruangan='$Ruangan' AND '$WaktuPinjam' >= waktu_pinjam AND '$WaktuPinjam' < waktu_selesai");
 
         return $result;
     }
     
-    function cekTanggalByAdmin($TanggalPinjam, $Ruangan, $WaktuPinjam) {
+    function cekWaktuSelesai($TanggalPinjam, $Ruangan, $WaktuSelesai) {
         // $result = mysql_query("SELECT * FROM tb_observasi WHERE kd_ruangan = '$Ruangan' AND '$TanggalSelesai' "
         //         . "BETWEEN `tanggal_pinjam` AND `tanggal_selesai` AND '$WaktuSelesai' BETWEEN `waktu_pinjam` AND `waktu_selesai`");
 
         //$result = mysql_query("SELECT * FROM (SELECT * FROM tb_observasi WHERE kd_ruangan='$Ruangan' AND '$TanggalSelesai' BETWEEN tanggal_pinjam AND tanggal_selesai) t1 LEFT JOIN
 //(SELECT * FROM tb_observasi WHERE kd_ruangan='$Ruangan' AND '$WaktuSelesai' BETWEEN waktu_pinjam AND waktu_selesai) t2 ON (t1.`kd_peminjaman` = t2.`kd_peminjaman`);");
         
-        $result = mysql_query("SELECT * FROM tb_observasi WHERE tanggal_pinjam='$TanggalPinjam' AND kd_ruangan='$Ruangan' AND '$WaktuPinjam' >= waktu_pinjam AND '$WaktuPinjam' < waktu_selesai AND status_peminjaman = 'Approved' ");
+        $result = mysql_query("SELECT * FROM tb_observasi WHERE tanggal_pinjam='$TanggalPinjam' AND kd_ruangan='$Ruangan' AND '$WaktuSelesai' >= waktu_pinjam AND '$WaktuSelesai' < waktu_selesai");
 
         return $result;
     }
@@ -140,6 +140,12 @@ class DB_Functions {
     
      function updateStatusPeminjaman($kdPeminjaman, $action){
         $result = mysql_query("Update tb_observasi SET status_peminjaman = '$action' where md5(kd_peminjaman) = '$kdPeminjaman'");
+        return $result;
+    }
+    
+     function deleteDataObservasi($KodePeminjaman){
+        $result = mysql_query("Delete From tb_observasi where md5(kd_peminjaman)='$KodePeminjaman'");
+        
         return $result;
     }
     
@@ -169,7 +175,7 @@ class DB_Functions {
     }
     
     function getDataRuanganByKode($Kode) {
-        $result = mysql_query("SELECT * FROM tb_ruangan where md5(id) = '$Kode'");
+        $result = mysql_query("SELECT * FROM tb_ruangan where md5(kd_ruangan) = '$Kode'");
         return $result;
     }
     
@@ -179,14 +185,14 @@ class DB_Functions {
         return $result;
     }
     
-    function updateDataRuangan($Id,$Kode,$NamaRuangan,$Keterangan){
-        $result = mysql_query("Update tb_ruangan SET kd_ruangan='$Kode', nama_ruangan='$NamaRuangan', keterangan='$Keterangan' where md5(id)='$Id'");
+    function updateDataRuangan($Kode,$NamaRuangan,$Keterangan){
+        $result = mysql_query("Update tb_ruangan SET nama_ruangan='$NamaRuangan', keterangan='$Keterangan' where md5(kd_ruangan)='$Kode'");
         
         return $result;
     }
     
     function deleteDataRuangan($Id){
-        $result = mysql_query("Delete From tb_ruangan where md5(id)='$Id'");
+        $result = mysql_query("Delete From tb_ruangan where md5(kd_ruangan)='$Id'");
         
         return $result;
     }

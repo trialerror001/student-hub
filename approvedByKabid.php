@@ -23,8 +23,9 @@ $waktuSelesai = $kolomData['waktu_selesai'];
 $status = "Reserved";
 
 if ($action == 'Approved') {
-    $result = $fungsi->cekTanggal($tanggalPinjam,$ruangan, $waktuMulai);
-    if (mysql_num_rows($result) >= 1) {
+    $result = $fungsi->cekWaktuPinjam($tanggalPinjam, $ruangan, $waktuMulai);
+    $result2 = $fungsi->cekWaktuSelesai($tanggalPinjam, $ruangan, $waktuSelesai);
+    if (mysql_num_rows($result) || mysql_num_rows($result2) >= 1) {
         $pesanError = array();
         $pesanError[] = "Maaf, Ruangan $ruangan Pada Jadwal Tersebut Sedang Digunakan";
 
@@ -37,26 +38,24 @@ if ($action == 'Approved') {
                 echo "&nbsp;&nbsp; $noPesan. $pesan_tampil<br>";
             }
             echo "</div> <br>";
-            echo "<a href=?page=DataRequest>Kembali Ke Form</a>";
+            echo "<a href=?page=FormRequest>Kembali Ke Form</a>";
         }
-      
     } else {
         $fungsi->insertObservasi($KodePinjam, $idRequest, $ruangan, $tanggalPinjam, $waktuMulai, $waktuSelesai, $status);
         $result = $fungsi->updateAction($REQ, "Process");
         if ($result) {
             ?>
-             <script>
+            <script>
                 swal("Terima Kasih!", "Permohonan Akan Segera Diproses", "success");
                 setTimeout(function () {
-                        window.location = "?page=DataRequest"
-                    }, 3000);
-        
-          </script>
+                    window.location = "?page=DataRequest"
+                }, 3000);
+
+            </script>
             <?php
         }
-       
     }
-} else if ($action == 'Denied') {
+} else if ($action == 'Declined') {
     ?>
     <script>
 
@@ -72,13 +71,13 @@ if ($action == 'Approved') {
                 });
     </script>
     <?php
-    $to="ferdian.aditya2302@gmail.com";
+    $to = "ferdian.aditya2302@gmail.com";
     $subject = "Penolakan Peminjaman Ruangan";
     $txt = "Maaf, ruangan sedang tidak tersedia";
-    
+
     //nanti disini diganti dengan pengiriman email
     //echo "<script>alert('Maaf, Peminjaman anda kami tolak')</script>";
-    $fungsi->updateAction($idRequest, $action);
+    $fungsi->updateAction($REQ, $action);
     //mail($to, $subject, $txt);
     ?>
 

@@ -14,12 +14,12 @@
     <?php
     if(isset($_POST['updateRuangan'])){
         
-        $Id = $_POST['id'];
-        $KodeRuangan = $_POST['kodeRuangan'];
+        $KodeRuangan = md5(mb_convert_encoding($_POST['kodeRuangan'],"UTF-32")) ;
         $NamaRuangan = $_POST['namaRuangan'];
         $Keterangan = $_POST['keterangan'];
+ 
         
-        $result = $fungsi->updateDataRuangan($Id, $KodeRuangan, $NamaRuangan, $Keterangan);
+        $result = $fungsi->updateDataRuangan($KodeRuangan, $NamaRuangan, $Keterangan);
          if ($result) {
             ?>
             <script>
@@ -34,7 +34,7 @@
     }
     
     $Kode = isset($_GET['Kode']) ? $_GET['Kode'] : '';
-    echo $Kode;
+    //echo $Kode;
     $dataShow = mysql_fetch_array($fungsi->getDataRuanganByKode($Kode));
     
     //$Id = $dataShow['id'];
@@ -54,7 +54,7 @@
                             <input type="hidden" name="id" value="<?php echo $Kode; ?>">
                             <div class="form-group col-md-12" style="font-size: 1vw">
                                 <label for="inputCity">Kode Ruangan</label> 
-                                <input type="text" class="form-control" id="inputCity" name="kodeRuangan" value="<?php echo $dataKode ?>">
+                                <input type="text" class="form-control" id="inputCity" name="kodeRuangan" value="<?php echo $dataKode ?>" readonly="true">
                             </div>
 
                             <div class="form-group col-md-12" style="font-size: 1vw">

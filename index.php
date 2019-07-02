@@ -14,7 +14,7 @@
     <body class="app">
         <div class="page-container">
             <?php
-            require './admin/partials/navbar.php';
+             require './admin/partials/navbar.php';
             ?>
             <?php include './Page/page.php' ?>
             

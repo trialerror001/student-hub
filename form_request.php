@@ -34,6 +34,7 @@
                             defaultDate: "+1w",
                             changeMonth: true,
                             numberOfMonths: 1,
+                            minDate: "today",
                             maxDate: "+1M",
                             dateFormat: "dd-mm-yy"
                         })
@@ -74,13 +75,15 @@
                                         <?php $fungsi->kodeRuangan(); ?>
                                     </div>
 
-                                    <div class="form-group col-md-12" style="font-size: 1vw"><label for="inputCity">Untuk Keperluan</label> <input type="text" class="form-control" id="inputCity" name="keperluan">
+                                    <div class="form-group col-md-12" style="font-size: 1vw">
+                                        <label for="inputCity">Untuk Keperluan</label> 
+                                        <input type="text" required="true" class="form-control" id="inputCity" name="keperluan">
                                     </div>
 
 
                                     <div class="form-group col-md-2" style="font-size: 1vw">
                                         <label for="inputZip">Pada Tanggal</label> 
-                                        <input type="text" id="fromAdmin" class="form-control bdc-grey-200" placeholder="When?" name="tanggalMulai">
+                                        <input type="text" id="fromAdmin" class="form-control bdc-grey-200" placeholder="When?" name="tanggalMulai" required="true">
                                     </div>
 
                                     <div class="form-group col-md-2" style="font-size: 1vw"><label for="inputCity">Jam</label> 
@@ -141,13 +144,15 @@
                                         <?php $fungsi->kodeRuangan(); ?>
                                     </div>
 
-                                    <div class="form-group col-md-12" style="font-size: 1vw"><label for="inputCity">Untuk Keperluan</label> <input type="text" class="form-control" id="inputCity" name="keperluan">
+                                    <div class="form-group col-md-12" style="font-size: 1vw">
+                                        <label for="inputCity">Untuk Keperluan</label> 
+                                        <input type="text" class="form-control" id="inputCity" name="keperluan" required="true">
                                     </div>
 
 
                                     <div class="form-group col-md-2" style="font-size: 1vw">
                                         <label for="inputZip">Pada Tanggal</label> 
-                                        <input type="text" id="from" class="form-control bdc-grey-200" placeholder="When?" name="tanggalMulai">
+                                        <input type="text" id="from" class="form-control bdc-grey-200" placeholder="When?" name="tanggalMulai" required="true">
                                     </div>
 
                                     <div class="form-group col-md-2" style="font-size: 1vw"><label for="inputCity">Jam</label> 
