@@ -5,9 +5,13 @@
         <group>
             <file>file:/C:/wamp64/www/student-hub/update_ruangan.php</file>
             <file>file:/C:/wamp64/www/student-hub/delete_ruangan.php</file>
+            <file>file:/C:/wamp64/www/student-hub/observasiByAdmin.php</file>
+            <file>file:/C:/wamp64/www/student-hub/insert_request.php</file>
             <file>file:/C:/wamp64/www/student-hub/index.php</file>
             <file>file:/C:/wamp64/www/student-hub/show_ruangan.php</file>
+            <file>file:/C:/wamp64/www/student-hub/approvedByKabid.php</file>
             <file>file:/C:/wamp64/www/student-hub/fungsi/fungsi.php</file>
+            <file>file:/C:/wamp64/www/student-hub/observasi.php</file>
         </group>
     </open-files>
 </project-private>

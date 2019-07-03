@@ -17,7 +17,7 @@ $TanggalPinjam = InggrisTgl($_POST['tanggalMulai']);
 $WaktuMulai = $_POST['cmbWaktuMulai'];
 $DurasiWaktu = $_POST['cmbDurasiWaktu'];
 //$WaktuSelesai = $_POST['cmbWaktuSelesai'];
-$WaktuSelesai = date('h:i:s', strtotime($DurasiWaktu, strtotime($WaktuMulai)));
+$WaktuSelesai = date('H:i:s', strtotime($DurasiWaktu, strtotime($WaktuMulai)));
 $Action = "Approved";
 
 $result = $fungsi->cekWaktuPinjam($TanggalPinjam, $Ruangan, $WaktuMulai);

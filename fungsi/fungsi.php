@@ -123,7 +123,7 @@ class DB_Functions {
         //$result = mysql_query("SELECT * FROM (SELECT * FROM tb_observasi WHERE kd_ruangan='$Ruangan' AND '$TanggalSelesai' BETWEEN tanggal_pinjam AND tanggal_selesai) t1 LEFT JOIN
 //(SELECT * FROM tb_observasi WHERE kd_ruangan='$Ruangan' AND '$WaktuSelesai' BETWEEN waktu_pinjam AND waktu_selesai) t2 ON (t1.`kd_peminjaman` = t2.`kd_peminjaman`);");
         
-        $result = mysql_query("SELECT * FROM tb_observasi WHERE tanggal_pinjam='$TanggalPinjam' AND kd_ruangan='$Ruangan' AND '$WaktuSelesai' >= waktu_pinjam AND '$WaktuSelesai' < waktu_selesai");
+        $result = mysql_query("SELECT * FROM tb_observasi WHERE tanggal_pinjam='$TanggalPinjam' AND kd_ruangan='$Ruangan' AND '$WaktuSelesai' >= waktu_pinjam AND '$WaktuSelesai' <= waktu_selesai");
 
         return $result;
     }
