@@ -17,7 +17,8 @@ if (isset($_POST['btnLogin'])) {
     if (mysqli_num_rows($result)) {
         $row = mysqli_fetch_assoc($result);
         $_SESSION['level'] = $row['level'];
-
+        $_SESSION['namaOrganisasi'] = $row['nama_organisasi'];
+        
         if ($_SESSION['level'] == "admin") {
             ?>
             <script>

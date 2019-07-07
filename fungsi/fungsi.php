@@ -6,6 +6,14 @@ class DB_Functions {
         include 'Koneksi/koneksi.php';
     }
 
+    function namaHimpunanDetail($namaOrganisasi){
+        $result = mysql_query("Select nama_organisasi from tb_organisasi where nama_organisasi = '$namaOrganisasi'");
+        while($data = mysql_fetch_array($result)){
+            echo $data['nama_organisasi'];
+        }
+        
+    }
+    
     function namaHimpunan() {
         echo "
          <select name='cmbHimpunan' class='form-control'>";
@@ -70,17 +78,22 @@ class DB_Functions {
 		
     }
 
-    function insertRequest($IdRequest, $Himpunan, $Ruangan, $Keperluan, $TanggalPinjam, $DurasiWaktu, $WaktuMulai, $WaktuSelesai, $Action) {
+    function insertRequest($IdRequest, $Himpunan, $Ruangan, $Keperluan, $TanggalPinjam, $DurasiWaktu, $WaktuMulai, $WaktuSelesai, $InsertedBy, $Action, $Keterangan) {
         $result = mysql_query("INSERT into tb_request (id_request, nama_organisasi, kd_ruangan, "
                 . "keperluan, tanggal_permohonan, tanggal_pinjam, durasiWaktu, waktu_mulai, "
-                . "waktu_selesai, action) Values ('$IdRequest', '$Himpunan', '$Ruangan', '$Keperluan', "
+                . "waktu_selesai, insertedBy, action, keterangan) Values ('$IdRequest', '$Himpunan', '$Ruangan', '$Keperluan', "
                 . "date(curdate()), '$TanggalPinjam', '$DurasiWaktu', '$WaktuMulai', "
-                . "'$WaktuSelesai','$Action')");
+                . "'$WaktuSelesai','$InsertedBy','$Action','$Keterangan')");
         return $result;
     }
 
     function getDataRequest() {
-        $result = mysql_query("SELECT * FROM tb_request where action='Pending' Order By id_request ASC ");
+        $result = mysql_query("SELECT a.*, b.* FROM tb_request as a JOIN tb_organisasi as b where a.action='Pending' and b.divisi='Fakultas' and a.nama_organisasi = b.nama_organisasi Order By a.id_request ASC ");
+        return $result;
+    }
+    
+     function checkStatus($namaOrganisasi) {
+        $result = mysql_query("Select status from tb_organisasi where nama_organisasi = '$namaOrganisasi' and status='Block' ");
         return $result;
     }
     

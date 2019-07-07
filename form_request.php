@@ -98,6 +98,11 @@
                                             <?php $fungsi->durasiWaktu(); ?>
                                         </select>
                                     </div>
+                                    
+                                     <div class="form-group col-md-12" style="font-size: 1vw">
+                                        <label for="inputCity">Alasan Booking</label> 
+                                        <input type="text" required="true" class="form-control" id="inputCity" name="keterangan">
+                                    </div>
 
                                     <!--<div class="form-group col-md-2" style="font-size: 1vw">
                                         <label for="inputZip">Sampai Tanggal</label> 
@@ -136,8 +141,10 @@
                         <div class="mT-30">
                             <form method="POST" action="?page=RequestRuangan">		
                                 <div class="form-row">		
-                                    <div class="form-group col-md-12" style="font-size: 1vw"><label for="inputEmail4">Nama Himpunan</label> 
-                                        <?php $fungsi->namaHimpunan(); ?>
+                                    <div class="form-group col-md-12" style="font-size: 1vw">
+                                        <label for="inputEmail4">Nama Himpunan</label> 
+                                        <input type="text" value="<?php $fungsi->namaHimpunanDetail($_SESSION['namaOrganisasi']); ?>" class="form-control" id="inputCity" name="namaOrganisasi" required="true" readonly="true">
+                                        
                                     </div>
 
                                     <div class="form-group col-md-4" style="font-size: 1vw"><label for="inputCity"> Ruang yang dipinjam</label> 

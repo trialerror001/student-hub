@@ -15,6 +15,12 @@ if ($_GET) {
                 die("Sorry Empty Page!");
             include "form_regis.php";
             break;
+            
+        case 'FormReport' :
+            if (!file_exists("formReport.php"))
+                die("Sorry Empty Page!");
+            include "formReport.php";
+            break;
 
         case 'HomePage' :
             if (!file_exists("home_page.php"))

@@ -18,7 +18,9 @@ $WaktuMulai = $_POST['cmbWaktuMulai'];
 $DurasiWaktu = $_POST['cmbDurasiWaktu'];
 //$WaktuSelesai = $_POST['cmbWaktuSelesai'];
 $WaktuSelesai = date('H:i:s', strtotime($DurasiWaktu, strtotime($WaktuMulai)));
+$InsertedBy = $_SESSION['namaOrganisasi'];
 $Action = "Approved";
+$Keterangan = $_POST['keterangan'];
 
 $result = $fungsi->cekWaktuPinjam($TanggalPinjam, $Ruangan, $WaktuMulai);
 $result2 = $fungsi->cekWaktuSelesai($TanggalPinjam, $Ruangan, $WaktuSelesai);
@@ -43,7 +45,7 @@ if (mysql_num_rows($result) || mysql_num_rows($result2) >= 1) {
             echo "</main>";
     }
 } else {
-    $result = $fungsi->insertRequest($IdRequest, $Himpunan, $Ruangan, $Keperluan, $TanggalPinjam, $DurasiWaktu, $WaktuMulai, $WaktuSelesai, $Action);
+    $result = $fungsi->insertRequest($IdRequest, $Himpunan, $Ruangan, $Keperluan, $TanggalPinjam, $DurasiWaktu, $WaktuMulai, $WaktuSelesai, $InsertedBy, $Action, $Keterangan);
     $result2 = $fungsi->insertObservasi($KodePinjam, $IdRequest, $Ruangan, $TanggalPinjam, $WaktuMulai, $WaktuSelesai, $Action);
 
     if ($result && $result2) {

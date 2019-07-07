@@ -20,7 +20,7 @@ $ruangan = $kolomData['kd_ruangan'];
 $tanggalPinjam = $kolomData['tanggal_pinjam'];
 $waktuMulai = $kolomData['waktu_mulai'];
 $waktuSelesai = $kolomData['waktu_selesai'];
-$status = "Reserved";
+$status = "Approved";
 
 if ($action == 'Approved') {
     $result = $fungsi->cekWaktuPinjam($tanggalPinjam, $ruangan, $waktuMulai);
@@ -42,7 +42,7 @@ if ($action == 'Approved') {
         }
     } else {
         $fungsi->insertObservasi($KodePinjam, $idRequest, $ruangan, $tanggalPinjam, $waktuMulai, $waktuSelesai, $status);
-        $result = $fungsi->updateAction($REQ, "Process");
+        $result = $fungsi->updateAction($REQ, "Approved");
         if ($result) {
             ?>
             <script>
