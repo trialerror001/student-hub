@@ -129,6 +129,12 @@ if ($_GET) {
                 die("Sorry Empty Page!");
             include "observasiByAdmin.php";
             break;
+            
+        case 'Register' :
+            if (!file_exists("register.php"))
+                die("Sorry Empty Page!");
+            include "register.php";
+            break;
     }
 } else {
     if (!file_exists("home_page.php"))

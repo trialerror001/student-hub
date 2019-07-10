@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.9
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jul 07, 2019 at 10:52 AM
--- Server version: 5.7.21
--- PHP Version: 5.6.35
+-- Generation Time: Jul 10, 2019 at 08:14 AM
+-- Server version: 5.7.26
+-- PHP Version: 5.6.40
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -82,6 +82,7 @@ CREATE TABLE IF NOT EXISTS `tb_organisasi` (
   `level` varchar(20) NOT NULL,
   `divisi` varchar(20) NOT NULL,
   `status` varchar(20) NOT NULL,
+  `active` int(11) NOT NULL,
   PRIMARY KEY (`nama_organisasi`),
   KEY `password` (`password`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -90,12 +91,13 @@ CREATE TABLE IF NOT EXISTS `tb_organisasi` (
 -- Dumping data for table `tb_organisasi`
 --
 
-INSERT INTO `tb_organisasi` (`nama_organisasi`, `username`, `password`, `email_organisasi`, `level`, `divisi`, `status`) VALUES
-('BKAK', 'admin', '21232f297a57a5a743894a0e4a801fc3', 'bkak@atmajaya.ac.id', 'admin', '', 'Clear'),
-('Cakrawala', 'cakrawala.univ', 'ea7faaa4dda0b9ba331036ae1caea3eb', 'cakrawala@atmajaya.ac.id', 'himpunan', 'Universitas', 'Clear'),
-('Himpunan Mahasiswa Elektro', 'hme.ft', '43dc7e72972e46401a9c2d1db0659fc7', 'hme.ft@atmajaya.ac.id', 'himpunan', 'Fakultas', 'Block'),
-('Himpunan Mahasiswa Mesin', 'hmm.ft', 'ec05c5e1b35c20b40010938e841200ef', 'hmm.ft@atmajaya.ac.id', 'himpunan', 'Fakultas', 'Clear'),
-('Kabid Kemahasiswaan Fakultas', 'kamhs.univ', '44adb8b5a8f46db49b2f5867bebb254c', 'kamhs.univ@atmajaya.ac.id', 'kabid', '', '');
+INSERT INTO `tb_organisasi` (`nama_organisasi`, `username`, `password`, `email_organisasi`, `level`, `divisi`, `status`, `active`) VALUES
+('BKAK', 'admin', '21232f297a57a5a743894a0e4a801fc3', 'bkak@atmajaya.ac.id', 'admin', '', 'Clear', 0),
+('Cakrawala', 'cakrawala.univ', 'ea7faaa4dda0b9ba331036ae1caea3eb', 'cakrawala@atmajaya.ac.id', 'himpunan', 'Universitas', 'Clear', 0),
+('Himpunan Mahasiswa Elektro', 'hme.ft', '43dc7e72972e46401a9c2d1db0659fc7', 'hme.ft@atmajaya.ac.id', 'himpunan', 'Fakultas', 'Block', 0),
+('Himpunan Mahasiswa Mesin', 'hmm.ft', 'ec05c5e1b35c20b40010938e841200ef', 'hmm.ft@atmajaya.ac.id', 'himpunan', 'Fakultas', 'Clear', 0),
+('Kabid Kemahasiswaan Fakultas', 'kamhs.univ', '44adb8b5a8f46db49b2f5867bebb254c', 'kamhs.univ@atmajaya.ac.id', 'kabid', '', '', 0),
+('Panitia SALT', 'salt', '536ee5a6a0ded3bac665adeca6bbf1b0', 'salt@atmajaya.ac.id', 'himpunan', 'Warek 3', 'Clear', 0);
 
 -- --------------------------------------------------------
 

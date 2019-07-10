@@ -145,7 +145,13 @@ class DB_Functions {
         $result = mysql_query("INSERT into tb_observasi (kd_peminjaman, id_request, kd_ruangan, tanggal_pinjam, waktu_pinjam, waktu_selesai, status_peminjaman) Values ('$KdPinjam', '$IdRequest', '$Ruangan', '$TanggalMulai', '$WaktuMulai', '$WaktuSelesai','$Action')");
         return $result;
     }
-
+    
+     function insertOrganisasi($NamaOrganisasi, $Username, $Password, $Email, $Level, $Divisi, $Status) {
+        $result = mysql_query("INSERT into tb_organisasi (nama_organisasi, username, password, email_organisasi, level, divisi, status, active) Values "
+                . "('$NamaOrganisasi', '$Username', md5('$Password'), '$Email', '$Level', '$Divisi','$Status', '0')");
+        return $result;
+    }
+    
     function updateAction($idRequest, $action){
         $result = mysql_query("Update tb_request SET action = '$action' where md5(id_request) = '$idRequest'");
         return $result;
