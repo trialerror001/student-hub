@@ -92,6 +92,16 @@ class DB_Functions {
         return $result;
     }
     
+    function searchVerificationAccount($Email, $Hash) {
+        $result = mysql_query("Select * From tb_organisasi where email_organisasi = '$Email' and password='$Hash' and active='0'");
+        return $result;
+    }
+    
+    function updateActiveAccount($email, $hash){
+        $result = mysql_query("Update tb_organisasi SET active='1' where email_organisasi='$email' and password='$hash' and active='0'");
+        return $result;
+    }
+    
      function checkStatus($namaOrganisasi) {
         $result = mysql_query("Select status from tb_organisasi where nama_organisasi = '$namaOrganisasi' and status='Block' ");
         return $result;

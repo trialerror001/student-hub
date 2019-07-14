@@ -1,5 +1,11 @@
 <?php
 
+   	/* 
+	$myHost = "localhost";
+	$myUser = "studenth_root001";
+	$myPass = "sistemruangan";
+	$myDbs = "studenth_sistemruangan";	
+   	*/
     $myHost = "localhost";
 	$myUser = "root";
 	$myPass = "";

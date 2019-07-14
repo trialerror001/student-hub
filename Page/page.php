@@ -135,6 +135,12 @@ if ($_GET) {
                 die("Sorry Empty Page!");
             include "register.php";
             break;
+            
+        case 'Verify' :
+            if (!file_exists("verifyEmail.php"))
+                die("Sorry Empty Page!");
+            include "verifyEmail.php";
+            break;
     }
 } else {
     if (!file_exists("home_page.php"))

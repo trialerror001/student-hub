@@ -2,10 +2,10 @@
 -- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1:3306
--- Generation Time: Jul 10, 2019 at 08:14 AM
--- Server version: 5.7.26
--- PHP Version: 5.6.40
+-- Host: localhost:3306
+-- Generation Time: Jul 14, 2019 at 08:43 PM
+-- Server version: 5.7.26-log
+-- PHP Version: 7.2.7
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `sistem_ruangan`
+-- Database: `studenth_sistemruangan`
 --
 
 -- --------------------------------------------------------
@@ -28,15 +28,12 @@ SET time_zone = "+00:00";
 -- Table structure for table `tb_barang`
 --
 
-DROP TABLE IF EXISTS `tb_barang`;
-CREATE TABLE IF NOT EXISTS `tb_barang` (
+CREATE TABLE `tb_barang` (
   `kd_peminjaman` varchar(12) NOT NULL,
   `nama_barang` text NOT NULL,
   `kd_barang` varchar(10) NOT NULL,
   `jumlah_barang` int(11) NOT NULL,
-  `keterangan` text NOT NULL,
-  PRIMARY KEY (`kd_barang`),
-  KEY `kd_peminjaman` (`kd_peminjaman`)
+  `keterangan` text NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf32;
 
 -- --------------------------------------------------------
@@ -45,18 +42,14 @@ CREATE TABLE IF NOT EXISTS `tb_barang` (
 -- Table structure for table `tb_observasi`
 --
 
-DROP TABLE IF EXISTS `tb_observasi`;
-CREATE TABLE IF NOT EXISTS `tb_observasi` (
+CREATE TABLE `tb_observasi` (
   `kd_peminjaman` varchar(10) CHARACTER SET latin1 NOT NULL,
   `id_request` varchar(10) CHARACTER SET latin1 NOT NULL,
   `kd_ruangan` varchar(15) CHARACTER SET latin1 NOT NULL,
   `tanggal_pinjam` date NOT NULL,
   `waktu_pinjam` time NOT NULL,
   `waktu_selesai` time NOT NULL,
-  `status_peminjaman` text CHARACTER SET latin1 NOT NULL,
-  PRIMARY KEY (`kd_peminjaman`),
-  KEY `id_request` (`id_request`),
-  KEY `kd_ruangan` (`kd_ruangan`)
+  `status_peminjaman` text CHARACTER SET latin1 NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf32;
 
 --
@@ -73,8 +66,7 @@ INSERT INTO `tb_observasi` (`kd_peminjaman`, `id_request`, `kd_ruangan`, `tangga
 -- Table structure for table `tb_organisasi`
 --
 
-DROP TABLE IF EXISTS `tb_organisasi`;
-CREATE TABLE IF NOT EXISTS `tb_organisasi` (
+CREATE TABLE `tb_organisasi` (
   `nama_organisasi` varchar(50) NOT NULL,
   `username` varchar(30) NOT NULL,
   `password` varchar(50) NOT NULL,
@@ -82,9 +74,7 @@ CREATE TABLE IF NOT EXISTS `tb_organisasi` (
   `level` varchar(20) NOT NULL,
   `divisi` varchar(20) NOT NULL,
   `status` varchar(20) NOT NULL,
-  `active` int(11) NOT NULL,
-  PRIMARY KEY (`nama_organisasi`),
-  KEY `password` (`password`)
+  `active` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -97,6 +87,7 @@ INSERT INTO `tb_organisasi` (`nama_organisasi`, `username`, `password`, `email_o
 ('Himpunan Mahasiswa Elektro', 'hme.ft', '43dc7e72972e46401a9c2d1db0659fc7', 'hme.ft@atmajaya.ac.id', 'himpunan', 'Fakultas', 'Block', 0),
 ('Himpunan Mahasiswa Mesin', 'hmm.ft', 'ec05c5e1b35c20b40010938e841200ef', 'hmm.ft@atmajaya.ac.id', 'himpunan', 'Fakultas', 'Clear', 0),
 ('Kabid Kemahasiswaan Fakultas', 'kamhs.univ', '44adb8b5a8f46db49b2f5867bebb254c', 'kamhs.univ@atmajaya.ac.id', 'kabid', '', '', 0),
+('Panitia PMB', 'Ferdy', '827ccb0eea8a706c4c34a16891f84e7b', 'ferdian.aditya2302@gmail.com', 'himpunan', 'Warek 3', 'Clear', 1),
 ('Panitia SALT', 'salt', '536ee5a6a0ded3bac665adeca6bbf1b0', 'salt@atmajaya.ac.id', 'himpunan', 'Warek 3', 'Clear', 0);
 
 -- --------------------------------------------------------
@@ -105,8 +96,7 @@ INSERT INTO `tb_organisasi` (`nama_organisasi`, `username`, `password`, `email_o
 -- Table structure for table `tb_request`
 --
 
-DROP TABLE IF EXISTS `tb_request`;
-CREATE TABLE IF NOT EXISTS `tb_request` (
+CREATE TABLE `tb_request` (
   `id_request` varchar(10) CHARACTER SET latin1 NOT NULL,
   `nama_organisasi` varchar(50) CHARACTER SET latin1 NOT NULL,
   `kd_ruangan` varchar(15) CHARACTER SET latin1 NOT NULL,
@@ -118,10 +108,7 @@ CREATE TABLE IF NOT EXISTS `tb_request` (
   `waktu_selesai` time NOT NULL,
   `insertedBy` varchar(50) NOT NULL,
   `action` varchar(20) CHARACTER SET latin1 NOT NULL,
-  `keterangan` varchar(100) NOT NULL,
-  PRIMARY KEY (`id_request`),
-  KEY `nama_organisasi` (`nama_organisasi`),
-  KEY `kd_ruangan` (`kd_ruangan`)
+  `keterangan` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -140,12 +127,10 @@ INSERT INTO `tb_request` (`id_request`, `nama_organisasi`, `kd_ruangan`, `keperl
 -- Table structure for table `tb_ruangan`
 --
 
-DROP TABLE IF EXISTS `tb_ruangan`;
-CREATE TABLE IF NOT EXISTS `tb_ruangan` (
+CREATE TABLE `tb_ruangan` (
   `kd_ruangan` varchar(10) CHARACTER SET latin1 NOT NULL,
   `nama_ruangan` text CHARACTER SET latin1 NOT NULL,
-  `keterangan` text CHARACTER SET latin1 NOT NULL,
-  PRIMARY KEY (`kd_ruangan`)
+  `keterangan` text CHARACTER SET latin1 NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf32;
 
 --
@@ -156,6 +141,46 @@ INSERT INTO `tb_ruangan` (`kd_ruangan`, `nama_ruangan`, `keterangan`) VALUES
 ('A1-201', 'Ruang Kelas A1-201', ''),
 ('A1-202', 'Ruang Kelas A1-202', ''),
 ('A1-204', 'Ruang Kelas A1-204', '');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `tb_barang`
+--
+ALTER TABLE `tb_barang`
+  ADD PRIMARY KEY (`kd_barang`),
+  ADD KEY `kd_peminjaman` (`kd_peminjaman`);
+
+--
+-- Indexes for table `tb_observasi`
+--
+ALTER TABLE `tb_observasi`
+  ADD PRIMARY KEY (`kd_peminjaman`),
+  ADD KEY `id_request` (`id_request`),
+  ADD KEY `kd_ruangan` (`kd_ruangan`);
+
+--
+-- Indexes for table `tb_organisasi`
+--
+ALTER TABLE `tb_organisasi`
+  ADD PRIMARY KEY (`nama_organisasi`),
+  ADD KEY `password` (`password`);
+
+--
+-- Indexes for table `tb_request`
+--
+ALTER TABLE `tb_request`
+  ADD PRIMARY KEY (`id_request`),
+  ADD KEY `nama_organisasi` (`nama_organisasi`),
+  ADD KEY `kd_ruangan` (`kd_ruangan`);
+
+--
+-- Indexes for table `tb_ruangan`
+--
+ALTER TABLE `tb_ruangan`
+  ADD PRIMARY KEY (`kd_ruangan`);
 
 --
 -- Constraints for dumped tables
