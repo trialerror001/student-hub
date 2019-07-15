@@ -3,9 +3,15 @@
 class DB_Functions {
 
     function __construct() {
-        include 'Koneksi/koneksi.php';
+        include '/Koneksi/koneksi.php';
     }
 
+    function validasi($user, $pass){
+        $result = mysql_query("SELECT * FROM tb_organisasi WHERE username='" . $user . "' and password = '" . md5($pass) . "' and active='1'");
+        return $result;
+        
+    }
+    
     function namaHimpunanDetail($namaOrganisasi){
         $result = mysql_query("Select nama_organisasi from tb_organisasi where nama_organisasi = '$namaOrganisasi'");
         while($data = mysql_fetch_array($result)){
@@ -88,7 +94,7 @@ class DB_Functions {
     }
 
     function getDataRequest() {
-        $result = mysql_query("SELECT a.*, b.* FROM tb_request as a JOIN tb_organisasi as b where a.action='Pending' and b.divisi='Fakultas' and a.nama_organisasi = b.nama_organisasi Order By a.id_request ASC ");
+        $result = mysql_query("SELECT a.*, b.* FROM tb_request as a JOIN tb_organisasi as b where a.action='Pending' and b.pic='Fakultas' and a.nama_organisasi = b.nama_organisasi Order By a.id_request ASC ");
         return $result;
     }
     
@@ -146,7 +152,7 @@ class DB_Functions {
         //$result = mysql_query("SELECT * FROM (SELECT * FROM tb_observasi WHERE kd_ruangan='$Ruangan' AND '$TanggalSelesai' BETWEEN tanggal_pinjam AND tanggal_selesai) t1 LEFT JOIN
 //(SELECT * FROM tb_observasi WHERE kd_ruangan='$Ruangan' AND '$WaktuSelesai' BETWEEN waktu_pinjam AND waktu_selesai) t2 ON (t1.`kd_peminjaman` = t2.`kd_peminjaman`);");
         
-        $result = mysql_query("SELECT * FROM tb_observasi WHERE tanggal_pinjam='$TanggalPinjam' AND kd_ruangan='$Ruangan' AND '$WaktuSelesai' >= waktu_pinjam AND '$WaktuSelesai' <= waktu_selesai");
+        $result = mysql_query("SELECT * FROM tb_observasi WHERE tanggal_pinjam='$TanggalPinjam' AND kd_ruangan='$Ruangan' AND '$WaktuSelesai' >= waktu_pinjam AND '$WaktuSelesai' < waktu_selesai");
 
         return $result;
     }
@@ -157,7 +163,7 @@ class DB_Functions {
     }
     
      function insertOrganisasi($NamaOrganisasi, $Username, $Password, $Email, $Level, $Divisi, $Status) {
-        $result = mysql_query("INSERT into tb_organisasi (nama_organisasi, username, password, email_organisasi, level, divisi, status, active) Values "
+        $result = mysql_query("INSERT into tb_organisasi (nama_organisasi, username, password, email_organisasi, level, pic, status, active) Values "
                 . "('$NamaOrganisasi', '$Username', md5('$Password'), '$Email', '$Level', '$Divisi','$Status', '0')");
         return $result;
     }
@@ -167,8 +173,13 @@ class DB_Functions {
         return $result;
     }
     
-     function updateStatusPeminjaman($kdPeminjaman, $action){
+    function updateStatusPeminjaman($kdPeminjaman, $action){
         $result = mysql_query("Update tb_observasi SET status_peminjaman = '$action' where md5(kd_peminjaman) = '$kdPeminjaman'");
+        return $result;
+    }
+    
+    function updateKeterangan($namaOrganisasi, $aksi, $keterangan){
+        $result = mysql_query("Update tb_organisasi SET status = '$aksi', keterangan='$keterangan' where nama_organisasi = '$namaOrganisasi'");
         return $result;
     }
     

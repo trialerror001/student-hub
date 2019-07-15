@@ -1,0 +1,103 @@
+[13-Jul-2019 13:19:03 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function mysql_connect() in /home/studenth/public_html/Koneksi/koneksi.php:15
+Stack trace:
+#0 /home/studenth/public_html/fungsi/fungsi.php(6): include()
+#1 /home/studenth/public_html/home_page.php(7): DB_Functions->__construct()
+#2 /home/studenth/public_html/Page/page.php(143): include('/home/studenth/...')
+#3 /home/studenth/public_html/index.php(19): include('/home/studenth/...')
+#4 {main}
+  thrown in /home/studenth/public_html/Koneksi/koneksi.php on line 15
+[13-Jul-2019 13:19:03 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function mysql_connect() in /home/studenth/public_html/Koneksi/koneksi.php:15
+Stack trace:
+#0 /home/studenth/public_html/fungsi/fungsi.php(6): include()
+#1 /home/studenth/public_html/home_page.php(7): DB_Functions->__construct()
+#2 /home/studenth/public_html/Page/page.php(143): include('/home/studenth/...')
+#3 /home/studenth/public_html/index.php(19): include('/home/studenth/...')
+#4 {main}
+  thrown in /home/studenth/public_html/Koneksi/koneksi.php on line 15
+[13-Jul-2019 13:23:28 UTC] PHP Warning:  mysqli_connect(): (28000/1045): Access denied for user 'root'@'localhost' (using password: NO) in /home/studenth/public_html/library/database.inc.php on line 9
+[13-Jul-2019 13:23:28 UTC] PHP Warning:  mysqli_real_escape_string() expects parameter 1 to be mysqli, boolean given in /home/studenth/public_html/validasi.php on line 11
+[13-Jul-2019 13:23:28 UTC] PHP Warning:  mysqli_real_escape_string() expects parameter 1 to be mysqli, boolean given in /home/studenth/public_html/validasi.php on line 12
+[13-Jul-2019 13:23:28 UTC] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, boolean given in /home/studenth/public_html/validasi.php on line 16
+[13-Jul-2019 13:23:28 UTC] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, null given in /home/studenth/public_html/validasi.php on line 17
+[13-Jul-2019 13:26:13 UTC] PHP Warning:  mysqli_connect(): (28000/1045): Access denied for user 'root'@'localhost' (using password: NO) in /home/studenth/public_html/library/database.inc.php on line 9
+[13-Jul-2019 13:26:13 UTC] PHP Warning:  mysqli_real_escape_string() expects parameter 1 to be mysqli, boolean given in /home/studenth/public_html/validasi.php on line 11
+[13-Jul-2019 13:26:13 UTC] PHP Warning:  mysqli_real_escape_string() expects parameter 1 to be mysqli, boolean given in /home/studenth/public_html/validasi.php on line 12
+[13-Jul-2019 13:26:13 UTC] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, boolean given in /home/studenth/public_html/validasi.php on line 16
+[13-Jul-2019 13:26:13 UTC] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, null given in /home/studenth/public_html/validasi.php on line 17
+[13-Jul-2019 13:26:41 UTC] PHP Warning:  mysqli_connect(): (28000/1045): Access denied for user 'root'@'localhost' (using password: NO) in /home/studenth/public_html/library/database.inc.php on line 9
+[13-Jul-2019 13:26:41 UTC] PHP Warning:  mysqli_real_escape_string() expects parameter 1 to be mysqli, boolean given in /home/studenth/public_html/validasi.php on line 11
+[13-Jul-2019 13:26:41 UTC] PHP Warning:  mysqli_real_escape_string() expects parameter 1 to be mysqli, boolean given in /home/studenth/public_html/validasi.php on line 12
+[13-Jul-2019 13:26:41 UTC] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, boolean given in /home/studenth/public_html/validasi.php on line 16
+[13-Jul-2019 13:26:41 UTC] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, null given in /home/studenth/public_html/validasi.php on line 17
+[13-Jul-2019 13:28:16 UTC] PHP Notice:  Undefined variable: conn in /home/studenth/public_html/validasi.php on line 11
+[13-Jul-2019 13:28:16 UTC] PHP Warning:  mysqli_real_escape_string() expects parameter 1 to be mysqli, null given in /home/studenth/public_html/validasi.php on line 11
+[13-Jul-2019 13:28:16 UTC] PHP Notice:  Undefined variable: conn in /home/studenth/public_html/validasi.php on line 12
+[13-Jul-2019 13:28:16 UTC] PHP Warning:  mysqli_real_escape_string() expects parameter 1 to be mysqli, null given in /home/studenth/public_html/validasi.php on line 12
+[13-Jul-2019 13:28:16 UTC] PHP Notice:  Undefined variable: conn in /home/studenth/public_html/validasi.php on line 16
+[13-Jul-2019 13:28:16 UTC] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, null given in /home/studenth/public_html/validasi.php on line 16
+[13-Jul-2019 13:28:16 UTC] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, null given in /home/studenth/public_html/validasi.php on line 17
+[14-Jul-2019 12:38:34 UTC] PHP Notice:  Undefined variable: email in /home/studenth/public_html/verifyEmail.php on line 7
+[14-Jul-2019 12:38:34 UTC] PHP Notice:  Undefined variable: hash in /home/studenth/public_html/verifyEmail.php on line 7
+[14-Jul-2019 12:38:34 UTC] PHP Deprecated:  mysql_escape_string(): This function is deprecated; use mysql_real_escape_string() instead. in /home/studenth/public_html/verifyEmail.php on line 11
+[14-Jul-2019 12:38:34 UTC] PHP Deprecated:  mysql_escape_string(): This function is deprecated; use mysql_real_escape_string() instead. in /home/studenth/public_html/verifyEmail.php on line 12
+[14-Jul-2019 12:38:34 UTC] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, resource given in /home/studenth/public_html/verifyEmail.php on line 15
+[14-Jul-2019 12:38:47 UTC] PHP Notice:  Undefined variable: email in /home/studenth/public_html/verifyEmail.php on line 7
+[14-Jul-2019 12:38:47 UTC] PHP Notice:  Undefined variable: hash in /home/studenth/public_html/verifyEmail.php on line 7
+[14-Jul-2019 12:38:47 UTC] PHP Deprecated:  mysql_escape_string(): This function is deprecated; use mysql_real_escape_string() instead. in /home/studenth/public_html/verifyEmail.php on line 11
+[14-Jul-2019 12:38:47 UTC] PHP Deprecated:  mysql_escape_string(): This function is deprecated; use mysql_real_escape_string() instead. in /home/studenth/public_html/verifyEmail.php on line 12
+[14-Jul-2019 12:38:47 UTC] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, resource given in /home/studenth/public_html/verifyEmail.php on line 15
+[14-Jul-2019 12:40:38 UTC] PHP Notice:  Undefined variable: email in /home/studenth/public_html/verifyEmail.php on line 7
+[14-Jul-2019 12:40:38 UTC] PHP Notice:  Undefined variable: hash in /home/studenth/public_html/verifyEmail.php on line 7
+[14-Jul-2019 12:40:38 UTC] PHP Deprecated:  mysql_escape_string(): This function is deprecated; use mysql_real_escape_string() instead. in /home/studenth/public_html/verifyEmail.php on line 11
+[14-Jul-2019 12:40:38 UTC] PHP Deprecated:  mysql_escape_string(): This function is deprecated; use mysql_real_escape_string() instead. in /home/studenth/public_html/verifyEmail.php on line 12
+[14-Jul-2019 12:40:38 UTC] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, resource given in /home/studenth/public_html/verifyEmail.php on line 15
+[14-Jul-2019 12:43:33 UTC] PHP Notice:  Undefined variable: email in /home/studenth/public_html/verifyEmail.php on line 7
+[14-Jul-2019 12:43:33 UTC] PHP Notice:  Undefined variable: hash in /home/studenth/public_html/verifyEmail.php on line 7
+[14-Jul-2019 12:43:33 UTC] PHP Deprecated:  mysql_escape_string(): This function is deprecated; use mysql_real_escape_string() instead. in /home/studenth/public_html/verifyEmail.php on line 11
+[14-Jul-2019 12:43:33 UTC] PHP Deprecated:  mysql_escape_string(): This function is deprecated; use mysql_real_escape_string() instead. in /home/studenth/public_html/verifyEmail.php on line 12
+[14-Jul-2019 12:43:33 UTC] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, resource given in /home/studenth/public_html/verifyEmail.php on line 15
+[14-Jul-2019 12:45:45 UTC] PHP Notice:  Undefined variable: email in /home/studenth/public_html/verifyEmail.php on line 7
+[14-Jul-2019 12:45:45 UTC] PHP Notice:  Undefined variable: hash in /home/studenth/public_html/verifyEmail.php on line 7
+[14-Jul-2019 12:45:45 UTC] PHP Deprecated:  mysql_escape_string(): This function is deprecated; use mysql_real_escape_string() instead. in /home/studenth/public_html/verifyEmail.php on line 11
+[14-Jul-2019 12:45:45 UTC] PHP Deprecated:  mysql_escape_string(): This function is deprecated; use mysql_real_escape_string() instead. in /home/studenth/public_html/verifyEmail.php on line 12
+[14-Jul-2019 12:45:45 UTC] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, resource given in /home/studenth/public_html/verifyEmail.php on line 15
+[14-Jul-2019 12:46:32 UTC] PHP Notice:  Undefined variable: email in /home/studenth/public_html/verifyEmail.php on line 7
+[14-Jul-2019 12:46:32 UTC] PHP Notice:  Undefined variable: hash in /home/studenth/public_html/verifyEmail.php on line 7
+[14-Jul-2019 12:46:32 UTC] PHP Deprecated:  mysql_escape_string(): This function is deprecated; use mysql_real_escape_string() instead. in /home/studenth/public_html/verifyEmail.php on line 11
+[14-Jul-2019 12:46:32 UTC] PHP Deprecated:  mysql_escape_string(): This function is deprecated; use mysql_real_escape_string() instead. in /home/studenth/public_html/verifyEmail.php on line 12
+[14-Jul-2019 12:46:32 UTC] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, resource given in /home/studenth/public_html/verifyEmail.php on line 15
+[14-Jul-2019 12:46:42 UTC] PHP Notice:  Undefined variable: email in /home/studenth/public_html/verifyEmail.php on line 7
+[14-Jul-2019 12:46:42 UTC] PHP Notice:  Undefined variable: hash in /home/studenth/public_html/verifyEmail.php on line 7
+[14-Jul-2019 12:46:42 UTC] PHP Deprecated:  mysql_escape_string(): This function is deprecated; use mysql_real_escape_string() instead. in /home/studenth/public_html/verifyEmail.php on line 11
+[14-Jul-2019 12:46:42 UTC] PHP Deprecated:  mysql_escape_string(): This function is deprecated; use mysql_real_escape_string() instead. in /home/studenth/public_html/verifyEmail.php on line 12
+[14-Jul-2019 12:46:42 UTC] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, resource given in /home/studenth/public_html/verifyEmail.php on line 15
+[14-Jul-2019 12:46:53 UTC] PHP Notice:  Undefined variable: email in /home/studenth/public_html/verifyEmail.php on line 7
+[14-Jul-2019 12:46:53 UTC] PHP Notice:  Undefined variable: hash in /home/studenth/public_html/verifyEmail.php on line 7
+[14-Jul-2019 12:46:53 UTC] PHP Deprecated:  mysql_escape_string(): This function is deprecated; use mysql_real_escape_string() instead. in /home/studenth/public_html/verifyEmail.php on line 11
+[14-Jul-2019 12:46:53 UTC] PHP Deprecated:  mysql_escape_string(): This function is deprecated; use mysql_real_escape_string() instead. in /home/studenth/public_html/verifyEmail.php on line 12
+[14-Jul-2019 12:46:53 UTC] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, resource given in /home/studenth/public_html/verifyEmail.php on line 15
+[14-Jul-2019 12:50:26 UTC] PHP Notice:  Undefined variable: email in /home/studenth/public_html/verifyEmail.php on line 7
+[14-Jul-2019 12:50:26 UTC] PHP Notice:  Undefined variable: hash in /home/studenth/public_html/verifyEmail.php on line 7
+[14-Jul-2019 12:50:26 UTC] PHP Deprecated:  mysql_escape_string(): This function is deprecated; use mysql_real_escape_string() instead. in /home/studenth/public_html/verifyEmail.php on line 11
+[14-Jul-2019 12:50:26 UTC] PHP Deprecated:  mysql_escape_string(): This function is deprecated; use mysql_real_escape_string() instead. in /home/studenth/public_html/verifyEmail.php on line 12
+[14-Jul-2019 12:53:18 UTC] PHP Notice:  Undefined variable: email in /home/studenth/public_html/verifyEmail.php on line 7
+[14-Jul-2019 12:53:18 UTC] PHP Notice:  Undefined variable: hash in /home/studenth/public_html/verifyEmail.php on line 7
+[14-Jul-2019 12:53:18 UTC] PHP Deprecated:  mysql_escape_string(): This function is deprecated; use mysql_real_escape_string() instead. in /home/studenth/public_html/verifyEmail.php on line 11
+[14-Jul-2019 12:53:18 UTC] PHP Deprecated:  mysql_escape_string(): This function is deprecated; use mysql_real_escape_string() instead. in /home/studenth/public_html/verifyEmail.php on line 12
+[14-Jul-2019 12:53:32 UTC] PHP Notice:  Undefined variable: email in /home/studenth/public_html/verifyEmail.php on line 7
+[14-Jul-2019 12:53:32 UTC] PHP Notice:  Undefined variable: hash in /home/studenth/public_html/verifyEmail.php on line 7
+[14-Jul-2019 12:53:32 UTC] PHP Deprecated:  mysql_escape_string(): This function is deprecated; use mysql_real_escape_string() instead. in /home/studenth/public_html/verifyEmail.php on line 11
+[14-Jul-2019 12:53:32 UTC] PHP Deprecated:  mysql_escape_string(): This function is deprecated; use mysql_real_escape_string() instead. in /home/studenth/public_html/verifyEmail.php on line 12
+[14-Jul-2019 12:53:36 UTC] PHP Notice:  Undefined variable: email in /home/studenth/public_html/verifyEmail.php on line 7
+[14-Jul-2019 12:53:36 UTC] PHP Notice:  Undefined variable: hash in /home/studenth/public_html/verifyEmail.php on line 7
+[14-Jul-2019 12:53:36 UTC] PHP Deprecated:  mysql_escape_string(): This function is deprecated; use mysql_real_escape_string() instead. in /home/studenth/public_html/verifyEmail.php on line 11
+[14-Jul-2019 12:53:36 UTC] PHP Deprecated:  mysql_escape_string(): This function is deprecated; use mysql_real_escape_string() instead. in /home/studenth/public_html/verifyEmail.php on line 12
+[14-Jul-2019 12:53:44 UTC] PHP Notice:  Undefined variable: email in /home/studenth/public_html/verifyEmail.php on line 7
+[14-Jul-2019 12:53:44 UTC] PHP Notice:  Undefined variable: hash in /home/studenth/public_html/verifyEmail.php on line 7
+[14-Jul-2019 12:53:44 UTC] PHP Deprecated:  mysql_escape_string(): This function is deprecated; use mysql_real_escape_string() instead. in /home/studenth/public_html/verifyEmail.php on line 11
+[14-Jul-2019 12:53:44 UTC] PHP Deprecated:  mysql_escape_string(): This function is deprecated; use mysql_real_escape_string() instead. in /home/studenth/public_html/verifyEmail.php on line 12
+[14-Jul-2019 12:54:30 UTC] PHP Notice:  Undefined variable: email in /home/studenth/public_html/verifyEmail.php on line 7
+[14-Jul-2019 12:54:30 UTC] PHP Notice:  Undefined variable: hash in /home/studenth/public_html/verifyEmail.php on line 7
+[14-Jul-2019 12:54:30 UTC] PHP Deprecated:  mysql_escape_string(): This function is deprecated; use mysql_real_escape_string() instead. in /home/studenth/public_html/verifyEmail.php on line 11
+[14-Jul-2019 12:54:30 UTC] PHP Deprecated:  mysql_escape_string(): This function is deprecated; use mysql_real_escape_string() instead. in /home/studenth/public_html/verifyEmail.php on line 12
+[14-Jul-2019 13:20:32 UTC] PHP Notice:  Undefined variable: row in /home/studenth/public_html/validasi.php on line 44

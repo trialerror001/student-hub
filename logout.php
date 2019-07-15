@@ -13,6 +13,7 @@
             title: "Anda Sudah Logout",
         });
         setTimeout(function () {
+            //window.location = "http://studenthub.website/"
             window.location = "http://localhost/student-hub/"
         }, 2000);
     </script>

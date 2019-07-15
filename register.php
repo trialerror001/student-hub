@@ -31,15 +31,15 @@
             <?php
             $to = $email;
             $subject = 'Registration Verification';
-            $message = 'Thank you for signing up! Your account has been created, you can login with the following credentials after you have activated your account.'
-                    . '</br>'
+            $message = 'Thank you for signing up! Your account has been created, you can login with the following credentials after you have activated your account<br>'
+                    . '<br>'
                     . '--------------------------------------<br>'
                     . 'Username : '.$username.'<br>'
                     . 'Password : '.$password.'<br>'
                     . '--------------------------------------<br>'
                     . '<br>'
                     . 'Please click this link to activate your account:<br><br>'
-                    . 'http://studenthub.website/?page=Verify?email='.$email.'&hash='. md5(($password)).''
+                    . 'http://studenthub.website/?page=Verify&email='.$email.'&hash='. md5(($password)).''
                     . '';
             
             $headers = 'From:noreply@studenthub.atmajaya.ac.id';
@@ -71,11 +71,10 @@
                         function validationEmail() {
                             $email = document.getElementById("email").value;
 
-                            if (/@atmajaya.ac.id\s*$/.test($email) == false) {
+                            /*if (/@atmajaya.ac.id\s*$/.test($email) == false) {
                                 swal("Gagal!", "Maaf, Email Tidak Sesuai Dengan Format", "error");
-                                //alert('Permohonan Pemi    njaman Ruangan Sudah Tersimpan');
-
-                            }
+                              
+                            */}
                         }
                     </script>
                 </div>
