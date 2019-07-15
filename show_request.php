@@ -43,12 +43,12 @@
                     </thead>
                     <tbody>
                         <?php
-                        $myQry = $fungsi->getDataReservedForAdmin();
+                        $myQry = $fungsi->getDataRequestAdmin($_SESSION['fakultas']);
                         while ($kolomData = mysql_fetch_array($myQry)) {
                             //print_r($kolomData);
                             ?>
                             <tr>
-                                <td><?php echo $kolomData['kd_peminjaman']; ?></td>
+                                <td><?php echo $kolomData['id_request']; ?></td>
                                 <td><?php echo $kolomData['nama_organisasi']; ?></td>
                                 <td><?php echo $kolomData['kd_ruangan']; ?></td>
                                 <td><?php echo $kolomData['keperluan']; ?></td>
@@ -57,14 +57,25 @@
                                 <td><?php echo date('h:i', strtotime($kolomData['waktu_selesai'])); ?></td>
 
                                 <td>
-                                    <a href="?page=AcceptRequest&REQ=<?php echo md5($kolomData['kd_peminjaman']); ?>&Action=Approved">
+                                    <a href="?page=KabidApproval&REQ=<?php echo md5($kolomData['id_request']); ?>&Action=Approved">
                                         <img src="images/approve.png" width="50" height="50" />
                                     </a>
                                 </td>   
                                 <td>
-                                    <a href="?page=AcceptRequest&REQ=<?php echo md5($kolomData['kd_peminjaman']); ?>&Action=Declined">
+                                    <!--<a href="?page=KabidApproval&REQ=<?php //echo md5($kolomData['id_request']);  ?>&Action=Declined">
                                         <img src="images/denied.png" width="50" height="50" />
-                                    </a>
+                                    </a>-->
+                                    <img src="images/denied.png" width="50" height="50" onclick="popUpMessage();" />
+                                    <script type="text/javascript">
+                                        function popUpMessage() {
+                                            swal("Tuliskan alasan anda:", {
+                                                content: "input",
+                                            })
+                                                    .then((value) => {
+                                                        window.location = "?page=KabidApproval&REQ=<?php echo md5($kolomData['id_request']); ?>&Action=Declined&Keterangan=" + value;
+                                                    });
+                                        }
+                                    </script>
                                 </td>
 
 

@@ -24,10 +24,13 @@
                             maxDate: "+1M",
                             dateFormat: "dd-mm-yy"
                         })
-                        .on("change", function () {
+                        $('#from').change(function(){
+                            $( "#from" ).datepicker({ minDate: "+3D", maxDate: "+1M" });
+                        })
+                        /*.on("change", function () {
                             //to.datepicker("option","minDate", getDate(this));
                             from.datepicker("option", "minDate", getDate(this));
-                        });
+                        });*/
                 
                 fromAdmin = $("#fromAdmin")
                         .datepicker({
@@ -38,10 +41,13 @@
                             maxDate: "+1M",
                             dateFormat: "dd-mm-yy"
                         })
-                        .on("change", function () {
+                        $('#fromAdmin').change(function(){
+                            $( "#fromAdmin" ).datepicker({ minDate: "+3D", maxDate: "+1M" });
+                        })
+                        /*.on("change", function () {
                             //to.datepicker("option","minDate", getDate(this));
                             from.datepicker("option", "minDate", getDate(this));
-                        });
+                        });*/
             function getDate(element) {
                     var date;
                     try {

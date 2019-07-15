@@ -93,6 +93,12 @@ class DB_Functions {
         return $result;
     }
     
+    function updateAction($REQ, $action){
+        $result = mysql_query("UPDATE tb_request set action='$action' where md5(id_request)='$REQ'");
+        return result;
+    }
+    
+    
     function declineRequestTicket($action, $keterangan, $idRequest){
         $result = mysql_query("Update tb_request SET action='$action', keterangan='$keterangan' WHERE md5(id_request)='$idRequest'");
         return $result;
@@ -101,6 +107,12 @@ class DB_Functions {
     function getDataRequest($Fakultas) {
         $result = mysql_query("SELECT a.*, b.* FROM tb_request as a JOIN tb_organisasi as b where a.action='Pending' "
                 . "and b.pic='Fakultas' and b.fakultas = '$Fakultas' and a.nama_organisasi = b.nama_organisasi Order By a.id_request ASC ");
+        return $result;
+    }
+    
+    function getDataRequestAdmin($Fakultas) {
+        $result = mysql_query("SELECT a.*, b.* FROM tb_request as a JOIN tb_organisasi as b where a.action='Pending' "
+                . "and b.pic='Universitas' and b.fakultas = '$Fakultas' and a.nama_organisasi = b.nama_organisasi Order By a.id_request ASC ");
         return $result;
     }
     

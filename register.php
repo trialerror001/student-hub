@@ -32,15 +32,14 @@
             <?php
             $to = $email;
             $subject = 'Registration Verification';
-            $message = 'Thank you for signing up! Your account has been created, you can login with the following credentials after you have activated your account<br>'
-                    . '<br>'
-                    . '--------------------------------------<br>'
-                    . 'Username : ' . $username . '<br>'
-                    . 'Password : ' . $password . '<br>'
-                    . '--------------------------------------<br>'
-                    . '<br>'
-                    . 'Please click this link to activate your account:<br><br>'
-                    . 'http://studenthub.website/?page=Verify&email=' . $email . '&hash=' . md5(($password)) . ''
+            $message = 
+                    'Thank you for signing up! Your account has been created, you can login with the following credentials after you have activated your account
+                    
+                    --------------------------------------
+                    Username : '.$username.', Password : '.$password.'
+                    --------------------------------------
+                    Please click this link to activate your account:
+                    http://studenthub.website/?page=Verify&email=' . $email . '&hash=' . md5(($password)) . ''
                     . '';
 
             $headers = 'From:noreply@studenthub.atmajaya.ac.id';
