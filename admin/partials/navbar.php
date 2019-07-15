@@ -32,6 +32,13 @@
                         <li role="separator" class="divider"></li>
                         <li>
                             <a href="" class="d-b td-n pY-5 bgcH-grey-100 c-grey-700">
+                                    <!--<i class="ti-power-off mR-10"></i> --> 
+                                <a href="?page=HomePage"><span>Dashboard</span></a>
+                            </a>
+                        </li>
+                        <li role="separator" class="divider"></li>
+                        <li>
+                            <a href="" class="d-b td-n pY-5 bgcH-grey-100 c-grey-700">
                                     <!--<i class="ti-power-off mR-10"></i>--> 
                                 <a href="?page=Login"><span>Login</span></a>
                             </a>
@@ -84,7 +91,7 @@
                                 <a href="?page=DataRuangan"><span>Ruangan</span></a>
                             </a>
                         </li>
-                        
+
                         <li role="separator" class="divider"></li>
                         <li>
                             <a href="" class="d-b td-n pY-5 bgcH-grey-100 c-grey-700">

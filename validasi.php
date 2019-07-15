@@ -18,7 +18,8 @@ if (isset($_POST['btnLogin'])) {
         $row = mysql_fetch_assoc($result);
         $_SESSION['level'] = $row['level'];
         $_SESSION['namaOrganisasi'] = $row['nama_organisasi'];
-
+        $_SESSION['fakultas'] = $row['fakultas'];
+        
         if ($_SESSION['level'] == "admin") {
             ?>
             <script>

@@ -14,11 +14,12 @@
         $username = $_POST['user'];
         $password = $_POST['pass'];
         $email = $_POST['email'];
-        $divisi = $_POST['divisi'];
+        $pic = $_POST['pic'];
+        $fakultas = $_POST['cmbFakultas'];
         $level = 'himpunan';
         $status = 'Clear';
 
-        $result = $fungsi->insertOrganisasi($namaOrganisasi, $username, $password, $email, $level, $divisi, $status);
+        $result = $fungsi->insertOrganisasi($namaOrganisasi, $username, $password, $email, $level, $pic, $status);
         if ($result) {
             ?>
             <script>
@@ -34,14 +35,14 @@
             $message = 'Thank you for signing up! Your account has been created, you can login with the following credentials after you have activated your account<br>'
                     . '<br>'
                     . '--------------------------------------<br>'
-                    . 'Username : '.$username.'<br>'
-                    . 'Password : '.$password.'<br>'
+                    . 'Username : ' . $username . '<br>'
+                    . 'Password : ' . $password . '<br>'
                     . '--------------------------------------<br>'
                     . '<br>'
                     . 'Please click this link to activate your account:<br><br>'
-                    . 'http://studenthub.website/?page=Verify&email='.$email.'&hash='. md5(($password)).''
+                    . 'http://studenthub.website/?page=Verify&email=' . $email . '&hash=' . md5(($password)) . ''
                     . '';
-            
+
             $headers = 'From:noreply@studenthub.atmajaya.ac.id';
             mail($to, $subject, $message, $headers);
         }
@@ -72,9 +73,9 @@
                             $email = document.getElementById("email").value;
 
                             /*if (/@atmajaya.ac.id\s*$/.test($email) == false) {
-                                swal("Gagal!", "Maaf, Email Tidak Sesuai Dengan Format", "error");
-                              
-                            */}
+                             swal("Gagal!", "Maaf, Email Tidak Sesuai Dengan Format", "error");
+                             
+                             */}
                         }
                     </script>
                 </div>
@@ -87,8 +88,21 @@
                     <input type="password" class="form-control" name="pass" placeholder="Password">
                 </div>
                 <div class="form-group">
+                    <label class="text-normal text-dark">Fakultas</label>
+                    <select name="cmbFakultas" class="form-control">
+                        <option value="FEB">Fakultas Ekonomi dan Bisnis</option>
+                        <option value="FIABIKOM">Fakultas Ilmu Administrasi Bisnis dan Ilmu Ekonomi</option>
+                        <option value="FEB">Fakultas Pendidikan dan Bahasa</option>
+                        <option value="FEB">Fakultas Teknik</option>
+                        <option value="FEB">Fakultas Hukum</option>
+                        <option value="FEB">Fakultas Kedokteran dan Ilmu Kesehatan</option>
+                        <option value="FEB">Fakultas Psikologi</option>
+                        <option value="FEB">Fakultas Teknobiologi</option>
+                    </select>
+                </div>
+                <div class="form-group">
                     <label class="text-normal text-dark">Penanggung Jawab</label>
-                    <select name='divisi' class='form-control'>
+                    <select name='pic' class='form-control'>
                         <option value='Warek 3'>Wakil Rektor 3</option>
                         <option value='Fakultas'>Kabid Kemahasiswaan</option>
                         <option value='Universitas'>BKAK</option>

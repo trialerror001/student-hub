@@ -6,23 +6,25 @@
         require "./admin/partials/header.php";
         include "./library/inc.seslogin.php";
         include './fungsi/fungsi.php';
+        include 'library/inc.library.php';
         
         $fungsi = new DB_Functions();
 
         if (isset($_POST['btnSubmit'])) {
+            $idReport = buatKode("tb_report", "RPT");
             $namaOrganisasi = $_POST['cmbHimpunan'];
             $aksi = $_POST['cmbAksi'];
             $keterangan = $_POST['reportReason'];
             //echo $namaOrganisasi."<br>".$aksi."<br>".$keterangan;
             
-            
             $result = $fungsi->updateKeterangan($namaOrganisasi, $aksi, $keterangan);
-            if ($result) {
+            $result2 = $fungsi->insertReport($idReport, $namaOrganisasi, $aksi, $keterangan);
+            if ($result && $result2) {
                 ?>
                 <script>
                     swal("Berhasil", "Status Berhasil Diubah", "success");
                     setTimeout(function () {
-                        window.location = "?page=FormLogin"
+                        window.location = "?page=FormReport"
                     }, 4000);
                 </script>
                 <?php

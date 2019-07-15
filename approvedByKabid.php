@@ -9,6 +9,7 @@ $fungsi = new DB_Functions();
 
 $action = isset($_GET['Action']) ? $_GET['Action'] : '';
 $REQ = isset($_GET['REQ']) ? $_GET['REQ'] : '';
+$Keterangan = isset($_GET['Keterangan']) ? $_GET['Keterangan'] : '';
 $KodePinjam = buatKode("tb_observasi", "OBS");
 
 $myQry = $fungsi->getRequestById($REQ);
@@ -38,7 +39,7 @@ if ($action == 'Approved') {
                 echo "&nbsp;&nbsp; $noPesan. $pesan_tampil<br>";
             }
             echo "</div> <br>";
-            echo "<a href=?page=FormRequest>Kembali Ke Form</a>";
+            echo "<a href=?page=DataRequest>Kembali Ke Halaman Request</a>";
         }
     } else {
         $fungsi->insertObservasi($KodePinjam, $idRequest, $ruangan, $tanggalPinjam, $waktuMulai, $waktuSelesai, $status);
@@ -56,36 +57,18 @@ if ($action == 'Approved') {
         }
     }
 } else if ($action == 'Declined') {
+    $result= $fungsi->declineRequestTicket($action, $Keterangan, $REQ);
+    //echo $action."<br>".$Keterangan."<br>".$REQ;
+    if($result){
     ?>
     <script>
-
-        swal("Tuliskan alasan anda:", {
-            content: "input",
-        })
-                .then((value) => {
-                    //swal(`You typed: ${value}`);
-                    swal('Respon anda telah dikirim');
-                    setTimeout(function () {
-                        window.location = "?page=DataRequest"
-                    }, 2000);
-                });
+         swal("Terima Kasih!", "Respon Anda Sudah Dikirim", "success");
+                setTimeout(function () {
+                    window.location = "?page=DataRequest"
+                }, 3000);
     </script>
     <?php
-    $to = "ferdian.aditya2302@gmail.com";
-    $subject = "Penolakan Peminjaman Ruangan";
-    $txt = "Maaf, ruangan sedang tidak tersedia";
-
-    //nanti disini diganti dengan pengiriman email
-    //echo "<script>alert('Maaf, Peminjaman anda kami tolak')</script>";
-    $fungsi->updateAction($REQ, $action);
-    //mail($to, $subject, $txt);
-    ?>
-
-    <?php
+    }
 }
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
+?>
